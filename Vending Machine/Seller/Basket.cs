@@ -19,6 +19,7 @@ namespace Vending_Machine.Seller
         // Словарь продуктов. Ключ - продукт, значение - количество товара в корзине
         public Dictionary<Product, int> Products { get; private set; }
         public Dictionary<Money, int> Moneys { get; private set; }
+        public string UserId { get; private set; }
         public double Money
         {
             get { return _money; }
@@ -49,8 +50,6 @@ namespace Vending_Machine.Seller
                 }
             }
         }
-      
-        public string UserId { get; private set; }
         
         public Basket()
         {
@@ -101,7 +100,7 @@ namespace Vending_Machine.Seller
         
         public bool IsCorrectPayment()
         {
-            if (Money >= GetTotalCost())
+            if (Money >= GetTotalCost() && Products.Count > 0)
             {
                 // TODO Добавить проверку что деньги не заблокированы
                 return true;
@@ -109,6 +108,5 @@ namespace Vending_Machine.Seller
 
             return false;
         }
-        
     }
 }
