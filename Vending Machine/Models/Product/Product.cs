@@ -4,12 +4,11 @@ namespace Vending_Machine.Models.Product
 {
     public abstract class Product
     {
-        private int _cost;    // стоимость в рублях
-        private int _count;
+        private double _cost;    // стоимость в рублях
         
         public string Name;
         
-        public int Cost
+        public double Cost
         {
             get { return _cost; }
 
@@ -24,22 +23,6 @@ namespace Vending_Machine.Models.Product
                     throw new ArgumentException("Стоимость товара должна быть больше 0");
                 }
             }
-        }
-
-        public int Count
-        {
-            get { return _count; }
-            private set
-            {
-                if (value >= 0)
-                {
-                    _count = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Количество товара должна быть больше 0");
-                }
-            }
-        }
+        }        
     }
 }

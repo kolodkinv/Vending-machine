@@ -8,7 +8,7 @@ namespace Vending_Machine.Seller
         /// <summary>
         /// Продать товар
         /// </summary>
-        /// <returns>Показывает успешность продажи товара</returns>
-        bool Sell();
+        /// <returns>Сдача с покупки</returns>
+        double Sell();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Vending_Machine.Models.Storage
@@ -17,5 +18,7 @@ namespace Vending_Machine.Models.Storage
         public StorageCell<T> GetAll() => new StorageCell<T>();
 
         public int GetCount(T item) => 0;
+        
+        public T GetItem(int id) => throw new Exception();
     }
 }

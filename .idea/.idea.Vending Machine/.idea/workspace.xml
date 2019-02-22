@@ -2,69 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29ba5743-a241-4159-b9c2-39e87daffeaa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Vending Machine.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/e2e/tsconfig.e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/app.server.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/counter/counter.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/counter/counter.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/counter/counter.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/fetch-data/fetch-data.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/fetch-data/fetch-data.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/home/home.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/home/home.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/nav-menu/nav-menu.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/nav-menu/nav-menu.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/nav-menu/nav-menu.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/tsconfig.server.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/src/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/ClientApp/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Controllers/SampleDataController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Models/Money.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Models/Product/Drink.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Models/Storage/StorageCell.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Pages/Error.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Pages/Error.cshtml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Pages/_ViewImports.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Repositories/IRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Repositories/ProductRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Seller/BeverageMachine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Startup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/Vending Machine.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vending Machine/wwwroot/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vending Machine/Exceptions/BasketCostException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vending Machine/Exceptions/BlockedMoneyException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vending Machine/Exceptions/NotFoundProductException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vending Machine/Seller/Basket.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vending Machine/Seller/VendingMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vending Machine/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vending Machine/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vending Machine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vending Machine/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vending Machine/Seller/BeverageMachine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,49 +23,135 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vending Machine/ClientApp/src/app/fetch-data/fetch-data.component.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="25" selection-start-column="25" selection-end-column="25" />
+            <state relative-caret-position="270">
+              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
               <folding>
-                <marker date="1550818963359" expanded="true" signature="32:331" ph="{...}" />
-                <marker date="1550818963359" expanded="true" signature="39:128" ph="/// Интерфейс продавца, позволяющий продавать товары ... " />
-                <marker date="1550818963359" expanded="true" signature="157:329" ph="{...}" />
-                <marker date="1550818963359" expanded="true" signature="172:302" ph="/// Продать товар ... " />
+                <marker date="1550834509321" expanded="true" signature="32:312" ph="{...}" />
+                <marker date="1550834509321" expanded="true" signature="39:128" ph="/// Интерфейс продавца, позволяющий продавать товары ... " />
+                <marker date="1550834509321" expanded="true" signature="157:310" ph="{...}" />
+                <marker date="1550834509321" expanded="true" signature="172:281" ph="/// Продать товар ... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/BeverageMachine.cs">
+        <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/VendingMachine.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+            <state relative-caret-position="405">
+              <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
               <folding>
-                <marker date="1550819522544" expanded="true" signature="6:136" ph="..." />
-                <marker date="1550819522544" expanded="true" signature="170:604" ph="{...}" />
-                <marker date="1550819522544" expanded="true" signature="214:602" ph="{...}" />
-                <marker date="1550819522544" expanded="true" signature="364:484" ph="{...}" />
-                <marker date="1550819522544" expanded="true" signature="520:596" ph="{...}" />
+                <marker date="1550834509289" expanded="false" signature="6:170" ph="..." />
+                <marker date="1550834509289" expanded="true" signature="204:2044" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="247:2042" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="449:609" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="679:1004" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="784:866" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="883:994" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="1042:1705" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="1128:1665" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="1201:1377" ph="{...}" />
+                <marker date="1550834509289" expanded="true" signature="1435:1605" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Money.cs">
+        <entry file="file://$PROJECT_DIR$/Vending Machine/Repositories/ProductRepository.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="151">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding>
-                <marker date="1550817321110" expanded="true" signature="32:191" ph="{...}" />
-                <marker date="1550817321110" expanded="true" signature="57:189" ph="{...}" />
+                <marker date="1550816457928" expanded="false" signature="6:85" ph="..." />
+                <marker date="1550816457928" expanded="true" signature="125:886" ph="{...}" />
+                <marker date="1550816457928" expanded="true" signature="184:884" ph="{...}" />
+                <marker date="1550816457928" expanded="true" signature="235:304" ph="{...}" />
+                <marker date="1550816457928" expanded="true" signature="340:409" ph="{...}" />
+                <marker date="1550816457928" expanded="true" signature="482:551" ph="{...}" />
+                <marker date="1550816457928" expanded="true" signature="593:662" ph="{...}" />
+                <marker date="1550816457928" expanded="true" signature="704:773" ph="{...}" />
+                <marker date="1550816457928" expanded="true" signature="809:878" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/Basket.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+              <folding>
+                <marker date="1550834509325" expanded="true" signature="6:194" ph="..." />
+                <marker date="1550834509325" expanded="true" signature="228:3125" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="235:302" ph="///  ... " />
+                <marker date="1550834509325" expanded="true" signature="326:3123" ph="{...}" />
+                <marker date="1550834509325" expanded="false" signature="649:1019" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="718:1009" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="764:836" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="857:995" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="1050:1431" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="1122:1421" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="1168:1243" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="1264:1407" ph="{...}" />
+                <marker date="1550834509325" expanded="false" signature="1522:1646" ph="{...}" />
+                <marker date="1550834509325" expanded="false" signature="1708:2317" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="1748:2180" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="1954:2034" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="2055:2166" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="2197:2307" ph="{...}" />
+                <marker date="1550834509325" expanded="false" signature="2378:2690" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="2481:2558" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="2575:2680" ph="{...}" />
+                <marker date="1550834509325" expanded="false" signature="2728:2845" ph="{...}" />
+                <marker date="1550834509325" expanded="false" signature="2893:3108" ph="{...}" />
+                <marker date="1550834509325" expanded="true" signature="2944:3071" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vending Machine/Exceptions/BlockedMoneyException.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding>
+                <marker date="1550833058780" expanded="true" signature="51:211" ph="{...}" />
+                <marker date="1550833058780" expanded="true" signature="104:209" ph="{...}" />
+                <marker date="1550833058780" expanded="true" signature="191:203" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vending Machine/Exceptions/BasketCostException.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="11" selection-end-column="11" />
+              <folding>
+                <marker date="1550825830787" expanded="true" signature="51:310" ph="{...}" />
+                <marker date="1550825830787" expanded="true" signature="58:157" ph="///  ... " />
+                <marker date="1550825830787" expanded="true" signature="205:308" ph="{...}" />
+                <marker date="1550825830787" expanded="true" signature="290:302" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vending Machine/Exceptions/NotFoundProductException.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="8" selection-end-column="11" />
+              <folding>
+                <marker date="1550826521400" expanded="true" signature="51:216" ph="{...}" />
+                <marker date="1550826521400" expanded="true" signature="106:214" ph="{...}" />
+                <marker date="1550826521400" expanded="true" signature="196:208" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -126,25 +160,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="351">
+              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
               <folding>
-                <marker date="1550818950248" expanded="true" signature="75:521" ph="{...}" />
-                <marker date="1550818950248" expanded="true" signature="82:182" ph="///  ... " />
-                <marker date="1550818950248" expanded="true" signature="210:519" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Storage/StorageCell.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-              <folding>
-                <marker date="1550818260084" expanded="true" signature="40:187" ph="{...}" />
-                <marker date="1550818260084" expanded="true" signature="98:185" ph="{...}" />
+                <marker date="1550821097621" expanded="true" signature="6:47" ph="..." />
+                <marker date="1550821097621" expanded="true" signature="89:603" ph="{...}" />
+                <marker date="1550821097621" expanded="true" signature="96:196" ph="/// Хранилище объектов ... " />
+                <marker date="1550821097621" expanded="true" signature="224:601" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -153,19 +175,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="390">
+              <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
-                <marker date="1550816458096" expanded="true" signature="55:997" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="91:995" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="247:604" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="316:594" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="362:433" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="454:580" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="630:989" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="699:979" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="745:817" ph="{...}" />
-                <marker date="1550816458096" expanded="true" signature="838:965" ph="{...}" />
+                <marker date="1550828982146" expanded="true" signature="55:598" ph="{...}" />
+                <marker date="1550828982146" expanded="true" signature="91:596" ph="{...}" />
+                <marker date="1550828982146" expanded="true" signature="225:582" ph="{...}" />
+                <marker date="1550828982146" expanded="true" signature="294:572" ph="{...}" />
+                <marker date="1550828982146" expanded="true" signature="340:411" ph="{...}" />
+                <marker date="1550828982146" expanded="true" signature="432:558" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -184,40 +202,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vending Machine/Repositories/IRepository.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-              <folding>
-                <marker date="1550816200575" expanded="true" signature="6:47" ph="..." />
-                <marker date="1550816200575" expanded="true" signature="87:352" ph="{...}" />
-                <marker date="1550816200575" expanded="true" signature="141:350" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vending Machine/Repositories/ProductRepository.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-              <folding>
-                <marker date="1550816457928" expanded="true" signature="6:85" ph="..." />
-                <marker date="1550816457928" expanded="true" signature="125:886" ph="{...}" />
-                <marker date="1550816457928" expanded="true" signature="184:884" ph="{...}" />
-                <marker date="1550816457928" expanded="true" signature="235:304" ph="{...}" />
-                <marker date="1550816457928" expanded="true" signature="340:409" ph="{...}" />
-                <marker date="1550816457928" expanded="true" signature="482:551" ph="{...}" />
-                <marker date="1550816457928" expanded="true" signature="593:662" ph="{...}" />
-                <marker date="1550816457928" expanded="true" signature="704:773" ph="{...}" />
-                <marker date="1550816457928" expanded="true" signature="809:878" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -225,8 +209,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Vending Machine/Models/Storage/StorageCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vending Machine/Exceptions/BlockedMoneyException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Vending Machine/Seller/BeverageMachine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vending Machine/Seller/VendingMachine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vending Machine/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vending Machine/Controllers/SampleDataController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/12ACC4DB-92C2-4CE4-9A4F-A2CACA4300EF/0e/63d5b75e/Thread.cs" root0="SKIP_HIGHLIGHTING" />
@@ -236,6 +221,9 @@
     <setting file="file://$PROJECT_DIR$/Vending Machine/Repositories/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vending Machine/Repositories/ProductRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vending Machine/Models/Money.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vending Machine/Seller/Basket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vending Machine/Exceptions/BasketCostException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vending Machine/Exceptions/NotFoundProductException.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -245,17 +233,22 @@
         <option value="$PROJECT_DIR$/Vending Machine/ClientApp/src/app/counter/counter.component.ts" />
         <option value="$PROJECT_DIR$/Vending Machine/Product/Product.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Repositories/IRepository.cs" />
-        <option value="$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Models/Seller/ISeller.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Repositories/ProductRepository.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Models/Money.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Models/VaultMoney.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Models/Storage/MoneyStorage.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Models/Storage/StorageCell.cs" />
-        <option value="$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs" />
-        <option value="$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Models/Product/Drink.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Exceptions/BasketCostException.cs" />
         <option value="$PROJECT_DIR$/Vending Machine/Seller/BeverageMachine.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Exceptions/NotFoundProductException.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Exceptions/BlockedMoneyException.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Seller/Basket.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs" />
+        <option value="$PROJECT_DIR$/Vending Machine/Seller/VendingMachine.cs" />
       </list>
     </option>
   </component>
@@ -284,6 +277,12 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Vending Machine" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Vending Machine" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Vending Machine" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Vending Machine" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Exceptions" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -373,12 +372,12 @@
       <workItem from="1550753108586" duration="1380000" />
       <workItem from="1550754643917" duration="1666000" />
       <workItem from="1550765262814" duration="2363000" />
-      <workItem from="1550813555911" duration="6041000" />
+      <workItem from="1550813555911" duration="18747000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11450000" />
+    <option name="totallyTimeSpent" value="24156000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -492,9 +491,6 @@
     <entry file="file://$PROJECT_DIR$/Vending Machine/appsettings.Development.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vending Machine/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vending Machine/ClientApp/src/karma.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -586,24 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vending Machine/Repositories/ProductRepository.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-          <folding>
-            <marker date="1550816457928" expanded="true" signature="6:85" ph="..." />
-            <marker date="1550816457928" expanded="true" signature="125:886" ph="{...}" />
-            <marker date="1550816457928" expanded="true" signature="184:884" ph="{...}" />
-            <marker date="1550816457928" expanded="true" signature="235:304" ph="{...}" />
-            <marker date="1550816457928" expanded="true" signature="340:409" ph="{...}" />
-            <marker date="1550816457928" expanded="true" signature="482:551" ph="{...}" />
-            <marker date="1550816457928" expanded="true" signature="593:662" ph="{...}" />
-            <marker date="1550816457928" expanded="true" signature="704:773" ph="{...}" />
-            <marker date="1550816457928" expanded="true" signature="809:878" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vending Machine/Models/VaultMoney.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -629,18 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <marker date="1550818950248" expanded="true" signature="75:521" ph="{...}" />
-            <marker date="1550818950248" expanded="true" signature="82:182" ph="///  ... " />
-            <marker date="1550818950248" expanded="true" signature="210:519" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Storage/StorageCell.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -652,35 +618,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs">
+    <entry file="file://$PROJECT_DIR$/Vending Machine/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
-          <folding>
-            <marker date="1550818963359" expanded="true" signature="32:331" ph="{...}" />
-            <marker date="1550818963359" expanded="true" signature="39:128" ph="/// Интерфейс продавца, позволяющий продавать товары ... " />
-            <marker date="1550818963359" expanded="true" signature="157:329" ph="{...}" />
-            <marker date="1550818963359" expanded="true" signature="172:302" ph="/// Продать товар ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding>
-            <marker date="1550816458096" expanded="true" signature="55:997" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="91:995" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="247:604" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="316:594" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="362:433" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="454:580" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="630:989" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="699:979" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="745:817" ph="{...}" />
-            <marker date="1550816458096" expanded="true" signature="838:965" ph="{...}" />
-          </folding>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
@@ -695,16 +636,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/BeverageMachine.cs">
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Exceptions/BasketCostException.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <marker date="1550825830787" expanded="true" signature="51:310" ph="{...}" />
+            <marker date="1550825830787" expanded="true" signature="58:157" ph="///  ... " />
+            <marker date="1550825830787" expanded="true" signature="205:308" ph="{...}" />
+            <marker date="1550825830787" expanded="true" signature="290:302" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Exceptions/NotFoundProductException.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <marker date="1550826521400" expanded="true" signature="51:216" ph="{...}" />
+            <marker date="1550826521400" expanded="true" signature="106:214" ph="{...}" />
+            <marker date="1550826521400" expanded="true" signature="196:208" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Exceptions/BlockedMoneyException.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <marker date="1550833058780" expanded="true" signature="51:211" ph="{...}" />
+            <marker date="1550833058780" expanded="true" signature="104:209" ph="{...}" />
+            <marker date="1550833058780" expanded="true" signature="191:203" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Product/Product.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <marker date="1550828982146" expanded="true" signature="55:598" ph="{...}" />
+            <marker date="1550828982146" expanded="true" signature="91:596" ph="{...}" />
+            <marker date="1550828982146" expanded="true" signature="225:582" ph="{...}" />
+            <marker date="1550828982146" expanded="true" signature="294:572" ph="{...}" />
+            <marker date="1550828982146" expanded="true" signature="340:411" ph="{...}" />
+            <marker date="1550828982146" expanded="true" signature="432:558" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Repositories/ProductRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <marker date="1550816457928" expanded="false" signature="6:85" ph="..." />
+            <marker date="1550816457928" expanded="true" signature="125:886" ph="{...}" />
+            <marker date="1550816457928" expanded="true" signature="184:884" ph="{...}" />
+            <marker date="1550816457928" expanded="true" signature="235:304" ph="{...}" />
+            <marker date="1550816457928" expanded="true" signature="340:409" ph="{...}" />
+            <marker date="1550816457928" expanded="true" signature="482:551" ph="{...}" />
+            <marker date="1550816457928" expanded="true" signature="593:662" ph="{...}" />
+            <marker date="1550816457928" expanded="true" signature="704:773" ph="{...}" />
+            <marker date="1550816457928" expanded="true" signature="809:878" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Models/Storage/Storage.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
           <folding>
-            <marker date="1550819522544" expanded="true" signature="6:136" ph="..." />
-            <marker date="1550819522544" expanded="true" signature="170:604" ph="{...}" />
-            <marker date="1550819522544" expanded="true" signature="214:602" ph="{...}" />
-            <marker date="1550819522544" expanded="true" signature="364:484" ph="{...}" />
-            <marker date="1550819522544" expanded="true" signature="520:596" ph="{...}" />
+            <marker date="1550821097621" expanded="true" signature="6:47" ph="..." />
+            <marker date="1550821097621" expanded="true" signature="89:603" ph="{...}" />
+            <marker date="1550821097621" expanded="true" signature="96:196" ph="/// Хранилище объектов ... " />
+            <marker date="1550821097621" expanded="true" signature="224:601" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/ISeller.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding>
+            <marker date="1550834509321" expanded="true" signature="32:312" ph="{...}" />
+            <marker date="1550834509321" expanded="true" signature="39:128" ph="/// Интерфейс продавца, позволяющий продавать товары ... " />
+            <marker date="1550834509321" expanded="true" signature="157:310" ph="{...}" />
+            <marker date="1550834509321" expanded="true" signature="172:281" ph="/// Продать товар ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/Basket.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+          <folding>
+            <marker date="1550834509325" expanded="true" signature="6:194" ph="..." />
+            <marker date="1550834509325" expanded="true" signature="228:3125" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="235:302" ph="///  ... " />
+            <marker date="1550834509325" expanded="true" signature="326:3123" ph="{...}" />
+            <marker date="1550834509325" expanded="false" signature="649:1019" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="718:1009" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="764:836" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="857:995" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="1050:1431" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="1122:1421" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="1168:1243" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="1264:1407" ph="{...}" />
+            <marker date="1550834509325" expanded="false" signature="1522:1646" ph="{...}" />
+            <marker date="1550834509325" expanded="false" signature="1708:2317" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="1748:2180" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="1954:2034" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="2055:2166" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="2197:2307" ph="{...}" />
+            <marker date="1550834509325" expanded="false" signature="2378:2690" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="2481:2558" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="2575:2680" ph="{...}" />
+            <marker date="1550834509325" expanded="false" signature="2728:2845" ph="{...}" />
+            <marker date="1550834509325" expanded="false" signature="2893:3108" ph="{...}" />
+            <marker date="1550834509325" expanded="true" signature="2944:3071" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vending Machine/Seller/VendingMachine.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding>
+            <marker date="1550834509289" expanded="false" signature="6:170" ph="..." />
+            <marker date="1550834509289" expanded="true" signature="204:2044" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="247:2042" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="449:609" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="679:1004" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="784:866" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="883:994" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="1042:1705" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="1128:1665" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="1201:1377" ph="{...}" />
+            <marker date="1550834509289" expanded="true" signature="1435:1605" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -146,6 +146,11 @@
         <e p="Controllers" t="Include">
           <e p="SampleDataController.cs" t="Include" />
         </e>
+        <e p="Exceptions" t="Include">
+          <e p="BasketCostException.cs" t="Include" />
+          <e p="BlockedMoneyException.cs" t="Include" />
+          <e p="NotFoundProductException.cs" t="Include" />
+        </e>
         <e p="Models" t="Include">
           <e p="Money.cs" t="Include" />
           <e p="Product" t="Include">
@@ -171,8 +176,9 @@
           <e p="ProductRepository.cs" t="Include" />
         </e>
         <e p="Seller" t="Include">
-          <e p="BeverageMachine.cs" t="Include" />
+          <e p="Basket.cs" t="Include" />
           <e p="ISeller.cs" t="Include" />
+          <e p="VendingMachine.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="Vending Machine.csproj" t="IncludeRecursive" />
