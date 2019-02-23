@@ -4,34 +4,31 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
 using Vending_Machine.Repositories;
+using Vending_Machine.Seller;
 
 namespace Vending_Machine.Controllers
 {
     [Route("api/[controller]")]
     public class MoneyController : Controller
     {
-        private readonly IRepository<Money> _moneyRepository;
+        private readonly VendingMachine _machine;
         
-        public MoneyController(IRepository<Money> moneyRepository)
+        public MoneyController(VendingMachine machine)
         {
-            _moneyRepository = moneyRepository;
+            _machine = machine;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var moneis = _moneyRepository.GetAll();
-            return Ok(new
-            {
-                Count = moneis.Count(),
-                Moneis = moneis
-            });
+            var moneis = _machine.GetAllMoneis();
+            return Ok(moneis);
         }
         
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var money = _moneyRepository.Get(id);
+            var money = _machine.GetMoney(id);
             if (money == null)
             {
                 return NotFound();
@@ -45,10 +42,21 @@ namespace Vending_Machine.Controllers
         {
             if(ModelState.IsValid)
             {
-                _moneyRepository.Create(money);
+                _machine.AddNewMoneyToStorage(money);
                 return CreatedAtAction(nameof(Get), new { id = money.Id }, money);
             }
             return BadRequest(ModelState);
-        }   
+        }  
+        
+        [HttpPut("[action]")]
+        public IActionResult Increase([FromBody] Money money)
+        {
+            if(ModelState.IsValid)
+            {
+                _machine.IncreaseMoneyInStorage(money.Id, money.Count);
+                return Ok();
+            }
+            return BadRequest(ModelState);
+        } 
     }
 }

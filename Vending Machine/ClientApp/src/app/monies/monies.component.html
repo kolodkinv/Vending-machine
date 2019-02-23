@@ -1,0 +1,36 @@
+<h1>Хранилище денег</h1>
+
+<p *ngIf="!monies"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="monies">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Название</th>
+    <th>Стоимость</th>
+    <th>Количество</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let money of monies">
+    <td>{{ money.id }}</td>
+    <td>{{ money.name }}</td>
+    <td>{{ money.cost }}</td>
+    <td>{{ money.count }}</td>
+    <td>
+      <div>
+        <form [formGroup]="increaseForm" (ngSubmit)="increase(money)">
+          <label>
+            Количество, шт:
+            <input type="number" formControlName="count">
+          </label>
+          <button type="submit">Добавить</button>
+        </form>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+

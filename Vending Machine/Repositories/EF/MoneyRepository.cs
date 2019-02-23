@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Vending_Machine.Models;
@@ -22,7 +23,7 @@ namespace Vending_Machine.Repositories.EF
 
         public Money Get(int id)
         {
-            throw new NotImplementedException();
+            return _db.Monies.FirstOrDefault(m => m.Id == id);
         }
 
         public IEnumerable<Money> Find(Func<Money, bool> predicate)
@@ -38,7 +39,8 @@ namespace Vending_Machine.Repositories.EF
 
         public void Update(Money item)
         {
-            throw new NotImplementedException();
+            _db.Entry(item).State = EntityState.Modified;
+            _db.SaveChanges();
         }
 
         public void Delete(int id)
