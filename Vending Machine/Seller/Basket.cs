@@ -17,9 +17,8 @@ namespace Vending_Machine.Seller
         private double _amount;
         private double _oddMoney;
 
-        // Словарь продуктов. Ключ - продукт, значение - количество товара в корзине
-        public ICollection<Product> Products { get; private set; }
-        public ICollection<Money> Money { get; private set; }
+        public IList<Product> Products { get; private set; }
+        public IList<Money> Money { get; private set; }
         
         [Key]
         public string Session { get; private set; }
@@ -61,16 +60,17 @@ namespace Vending_Machine.Seller
                 var amountDeposited = money.Cost * money.Count;
                 Amount += amountDeposited;
                 OddMoney += amountDeposited;
-                /*var item = Money.FirstOrDefault(m => m.Id == money.Id);
-
-                if (Moneys.ContainsKey(money))
+                var moneyInBasket = Money.FirstOrDefault(p => p.Id == money.Id);
+                if (moneyInBasket == null)
                 {
-                    Moneys[money] += count;
+                    money.Count = 1;
+                    Money.Append(money);
                 }
                 else
                 {
-                    Moneys.Append(new KeyValuePair<Money, int>(money, 1));
-                }*/
+                    var index = Money.IndexOf(moneyInBasket);
+                    Products[index].Count += 1;
+                }    
             }
             else
             {
@@ -81,16 +81,17 @@ namespace Vending_Machine.Seller
         public void AddProducts(Product product, int count)
         {
             OddMoney -= product.Cost * count;
-            
-            /*
-            if (Products.ContainsKey(product))
+            var productInBasket = Products.FirstOrDefault(p => p.Id == product.Id);
+            if (productInBasket == null)
             {
-                Products[product] += count;     
+                product.Count = count;
+                Products.Append(product);
             }
             else
             {
-                Products.Append(new KeyValuePair<Product, int>(product, 1));
-            }*/
+                var index = Products.IndexOf(productInBasket);
+                Products[index].Count += count;
+            }         
         }
 
         public double GetTotalCost()

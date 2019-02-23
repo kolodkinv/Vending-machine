@@ -21,14 +21,19 @@ namespace Vending_Machine.Seller
             _basket = new Basket();
         }
 
-        public IEnumerable<Money> GetAll()
+        public IEnumerable<Money> GetAllMoneis()
         {
             return _moneyStorage.GetAll();
         }
-        
-        public void AddMoneyToBasket(int idMoney, int count = 1)
+
+        public Money GetMoney(int id)
         {
-            var money = _moneyStorage.GetItem(idMoney);
+            return _moneyStorage.GetItem(id);
+        }
+        
+        public void AddMoneyToBasket(int id, int count = 1)
+        {
+            var money = _moneyStorage.GetItem(id);
             if (money != null)
             {
                 if (money.Enable)
@@ -47,9 +52,9 @@ namespace Vending_Machine.Seller
             }
         }
 
-        public void AddProductToBasket(int idProduct, int count = 1)
+        public void AddProductToBasket(int id, int count = 1)
         {
-            var product = _productStorage.GetItem(idProduct);
+            var product = _productStorage.GetItem(id);
             if (product != null)
             {
                 _basket.AddProducts(product, count); 
