@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2018.3/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2018.3/system/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_Vending Machine.-1069645776.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
@@ -149,17 +151,14 @@
         <e p="Exceptions" t="Include">
           <e p="BasketCostException.cs" t="Include" />
           <e p="BlockedMoneyException.cs" t="Include" />
-          <e p="NotFoundProductException.cs" t="Include" />
+          <e p="CountException.cs" t="Include" />
+          <e p="NotFoundException.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Money.cs" t="Include" />
           <e p="Product" t="Include">
             <e p="Drink.cs" t="Include" />
             <e p="Product.cs" t="Include" />
-          </e>
-          <e p="Storage" t="Include">
-            <e p="Storage.cs" t="Include" />
-            <e p="StorageCell.cs" t="Include" />
           </e>
         </e>
         <e p="Pages" t="Include">
@@ -172,8 +171,12 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Repositories" t="Include">
+          <e p="EF" t="Include">
+            <e p="MachineContext.cs" t="Include" />
+            <e p="MoneyRepository.cs" t="Include" />
+            <e p="ProductRepository.cs" t="Include" />
+          </e>
           <e p="IRepository.cs" t="Include" />
-          <e p="ProductRepository.cs" t="Include" />
         </e>
         <e p="Seller" t="Include">
           <e p="Basket.cs" t="Include" />
@@ -181,6 +184,10 @@
           <e p="VendingMachine.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
+        <e p="Storage" t="Include">
+          <e p="ICount.cs" t="Include" />
+          <e p="Storage.cs" t="Include" />
+        </e>
         <e p="Vending Machine.csproj" t="IncludeRecursive" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
