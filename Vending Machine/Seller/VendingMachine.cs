@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Drawing.Printing;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Vending_Machine.Exceptions;
@@ -20,6 +21,11 @@ namespace Vending_Machine.Seller
             _basket = new Basket();
         }
 
+        public IEnumerable<Money> GetAll()
+        {
+            return _moneyStorage.GetAll();
+        }
+        
         public void AddMoneyToBasket(int idMoney, int count = 1)
         {
             var money = _moneyStorage.GetItem(idMoney);
@@ -27,7 +33,8 @@ namespace Vending_Machine.Seller
             {
                 if (money.Enable)
                 {
-                    _basket.AddMoney(money, count);    
+                    money.Count = count;
+                    _basket.AddMoney(money);    
                 }
                 else
                 {
@@ -62,22 +69,40 @@ namespace Vending_Machine.Seller
             var oddMoney = 0.0;
             if (_basket.IsCorrectPayment())
             {
-                foreach (var position in _basket.Products)
+                foreach (var product in _basket.Products)
                 {
-                    position.Deconstruct(out var product, out var count);
-                    _productStorage.DecreaseItem(product.Id, count);
+                    _productStorage.DecreaseItem(product.Id, product.Count);
                 }
 
-                foreach (var position in _basket.Moneys)
+                foreach (var money in _basket.Money)
                 {
-                    position.Deconstruct(out var money, out var count);
-                    _moneyStorage.IncreaseItem(money.Id, count);
+                    _moneyStorage.IncreaseItem(money.Id, money.Count);
                 }
 
                 oddMoney = _basket.OddMoney;
             }
 
             return oddMoney;
+        }
+
+        public void AddNewMoneyToStorage(Money money)
+        {
+            _moneyStorage.PutItem(money);   
+        }
+
+        public void IncreaseMoneyInStorage(int id, int count)
+        {
+            _moneyStorage.IncreaseItem(id, count);
+        }
+
+        public void AddNewProductToStorage(Product product)
+        {
+            _productStorage.PutItem(product);
+        }
+
+        public void IncreaseProductInStorage(int id, int count)
+        {
+            _productStorage.IncreaseItem(id, count);
         }
     }
 }

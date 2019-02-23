@@ -1,18 +1,21 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using Vending_Machine.Storage;
 
 namespace Vending_Machine.Models.Product
 {
-    public abstract class Product
+    public class Product : ICount
     {
         private double _cost;    // стоимость в рублях
-        
-        public string Name;
-        
+
+        public int Id { get; set; }
+        public int Count { get; set; }
+        public string Name { get; set; }
         public double Cost
         {
             get { return _cost; }
 
-            private set
+            set
             {
                 if (value >= 0)
                 {

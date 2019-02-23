@@ -3,8 +3,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Vending_Machine.Models;
+using Vending_Machine.Models.Product;
+using Vending_Machine.Storage;
+using Vending_Machine.Repositories;
+using Vending_Machine.Repositories.EF;
+using Vending_Machine.Seller;
 
 namespace Vending_Machine
 {
@@ -24,6 +31,13 @@ namespace Vending_Machine
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.AddTransient<VendingMachine>();
+            services.AddTransient<Storage<Product>>();
+            services.AddTransient<Storage<Money>>();
+            services.AddTransient<IRepository<Product>, ProductRepository>();
+            services.AddTransient<IRepository<Money>, MoneyRepository>();
+            services.AddDbContext<MachineContext>(
+                opt => opt.UseSqlServer("Server=172.17.0.2,1433;Database=Machine2;User Id=SA;Password=ZxcVda!@#123"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

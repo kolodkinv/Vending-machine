@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Vending_Machine.Models.Product;
 
-namespace Vending_Machine.Repositories
+namespace Vending_Machine.Repositories.EF
 {
     public class ProductRepository: IRepository<Product>
     {

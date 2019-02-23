@@ -19,11 +19,24 @@ namespace Vending_Machine.Storage
             _repository = repository;
         }
 
+        public void PutItem(T item)
+        {
+            item.Count = 1;
+            _repository.Create(item);
+        }
+
+        public void RemoveItem(int id)
+        {
+            _repository.Delete(id);
+        }
+        
         public void IncreaseItem(int id, int count)
         {
             if (count > 0)
             {
-                ChangeAmountItem(id, count);    
+                var item = GetItem(id);
+                item.Count += count;
+                _repository.Update(item);    
             }
             else
             {
@@ -35,7 +48,16 @@ namespace Vending_Machine.Storage
         {
             if (count > 0)
             {
-                ChangeAmountItem(id, count);    
+                var item = GetItem(id);
+                item.Count -= count;
+                if (item.Count >= 0)
+                {
+                    _repository.Update(item);    
+                }
+                else
+                {
+                    throw new CountException($"Не хватает объектов типа {item.GetType()}");
+                }
             }
             else
             {
@@ -63,13 +85,6 @@ namespace Vending_Machine.Storage
             }
 
             throw new NotFoundException($"Объект типа {typeof(T)} не найден");
-        }
-
-        private void ChangeAmountItem(int id, int count)
-        {
-            var item = GetItem(id);
-            item.Count += count;
-            _repository.Update(item);        
         }
     }
 }

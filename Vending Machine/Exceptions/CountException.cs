@@ -2,9 +2,9 @@ using System;
 
 namespace Vending_Machine.Exceptions
 {
-    public class NotFoundException: Exception
+    public class CountException : Exception
     {
-        public NotFoundException(string message)
+        public CountException(string message)
             : base(message)
         { }
     }
