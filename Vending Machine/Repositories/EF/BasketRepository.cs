@@ -35,5 +35,25 @@ namespace Vending_Machine.Repositories.EF
         {
             throw new NotImplementedException();
         }
+        
+        private bool _disposed = false;
+ 
+        public virtual void Dispose(bool disposing)
+        {
+            if(!_disposed)
+            {
+                if(disposing)
+                {
+                    //db.Dispose();
+                }
+            }
+            _disposed = true;
+        }
+ 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }
