@@ -39,7 +39,6 @@ export class MoniesComponent implements OnInit{
   }
 
   editMoney(money: Money){
-    debugger;
     this.increaseForm.setValue({count: 0});
     this.decreaseForm.setValue({count: 0});
     this.currentMoney = money;

@@ -1,0 +1,7 @@
+table tr.not_enabled{
+  background-color: #ffd7e0;
+}
+
+table tr.enabled{
+  background-color: #cfffd1;
+}

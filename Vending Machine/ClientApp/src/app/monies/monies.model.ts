@@ -3,7 +3,7 @@ export class Money {
   name: string;
   count: number;
   cost: number;
-  enabled: boolean;
+  enable: boolean;
 
   constructor(){
 

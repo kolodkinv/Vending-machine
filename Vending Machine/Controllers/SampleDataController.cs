@@ -27,12 +27,20 @@ namespace Vending_Machine.Controllers
         {
             var money = new Money
             {
-                Cost = 100,
+                Cost = 500,
                 Count = 50,
                 Enable = true,
                 Name = "Рубль"
             };
             _seller.AddNewMoneyToStorage(money);
+            var money2 = new Money
+            {
+                Cost = 50,
+                Count = 50,
+                Enable = false,
+                Name = "Рубль"
+            };
+            _seller.AddNewMoneyToStorage(money2);
             
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

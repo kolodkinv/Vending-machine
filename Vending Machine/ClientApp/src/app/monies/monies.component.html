@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let money of monies">
+  <tr *ngFor="let money of monies" [ngClass]="{'enabled':money.enable,'not_enabled':!money.enable}">
     <td>{{ money.id }}</td>
     <td>{{ money.name }}</td>
     <td>{{ money.cost }}</td>

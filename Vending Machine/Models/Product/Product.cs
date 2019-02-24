@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Vending_Machine.Storage;
 
 namespace Vending_Machine.Models.Product
@@ -10,6 +11,8 @@ namespace Vending_Machine.Models.Product
 
         public int Id { get; set; }
         public int Count { get; set; }
+        // TODO Убрать кодировку
+        [Column(TypeName = "varchar(128) character set utf8")]
         public string Name { get; set; }
         public double Cost
         {

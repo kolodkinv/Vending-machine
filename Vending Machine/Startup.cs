@@ -36,8 +36,13 @@ namespace Vending_Machine
             services.AddTransient<Storage<Money>>();
             services.AddTransient<IRepository<Product>, ProductRepository>();
             services.AddTransient<IRepository<Money>, MoneyRepository>();
-            services.AddDbContext<MachineContext>(
-                opt => opt.UseSqlServer("Server=172.17.0.2,1433;Database=Machine4;User Id=SA;Password=ZxcVda!@#123"));
+            //services.AddDbContext<MachineContext>(
+            //    opt => opt.UseSqlServer("Server=172.17.0.2,1433;Database=Machine4;User Id=SA;Password=ZxcVda!@#123"));
+            services.AddDbContext<MachineContext>(options =>
+                options.UseMySql(
+                    "server=172.17.0.3;database=crypto;user=crypto;password=test;Charset=utf8;"
+                )
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
