@@ -1,4 +1,4 @@
-<h1>Хранилище денег</h1>
+<h1>Хранилище денег.</h1>
 
 <p *ngIf="!monies"><em>Loading...</em></p>
 
@@ -18,19 +18,34 @@
     <td>{{ money.cost }}</td>
     <td>{{ money.count }}</td>
     <td>
-      <div>
-        <form [formGroup]="increaseForm" (ngSubmit)="increase(money)">
-          <label>
-            Количество, шт:
-            <input type="number" formControlName="count">
-          </label>
-          <button type="submit">Добавить</button>
-        </form>
-      </div>
+      <ng-template [ngIf]="currentMoney?.id != money.id" [ngIfElse]="edit">
+        <button class="btn btn-sm btn-primary" (click)="editMoney(money)">Операции</button>
+      </ng-template>
     </td>
   </tr>
   </tbody>
 </table>
 
-
+<!--шаблон для операций-->
+<ng-template #edit>
+  <div>
+    <form [formGroup]="increaseForm" (ngSubmit)="increase(currentMoney)">
+      <label>
+        Количество, шт:
+        <input type="number" formControlName="count">
+      </label>
+      <button type="submit">Добавить</button>
+    </form>
+  </div>
+  <div>
+    <form [formGroup]="decreaseForm" (ngSubmit)="decrease(currentMoney)">
+      <label>
+        Количество, шт:
+        <input type="number" formControlName="count">
+      </label>
+      <button type="submit">Забрать</button>
+    </form>
+  </div>
+  <input type="button" value="Выйти" (click)="cancelEdit()" class="btn btn-sm btn-warning" />
+</ng-template>
 

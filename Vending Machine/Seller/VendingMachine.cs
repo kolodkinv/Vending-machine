@@ -99,6 +99,11 @@ namespace Vending_Machine.Seller
         {
             _moneyStorage.IncreaseItem(id, count);
         }
+        
+        public void DecreaseMoneyInStorage(int id, int count)
+        {
+            _moneyStorage.DecreaseItem(id, count);
+        }
 
         public void AddNewProductToStorage(Product product)
         {

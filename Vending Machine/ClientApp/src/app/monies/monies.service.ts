@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {Money} from "./monies.model";
 
 @Injectable()
 export class MoniesService {
@@ -18,5 +19,11 @@ export class MoniesService {
     let currentMoney = Object.assign({}, money);
     currentMoney.count = count;
     return this.httpClient.put(this.url + 'Increase', currentMoney);
+  }
+
+  public decreaseCount(money:Money, count:number): Observable<any>{
+    let currentMoney = Object.assign({}, money);
+    currentMoney.count = count;
+    return this.httpClient.put(this.url + 'Decrease', currentMoney);
   }
 }

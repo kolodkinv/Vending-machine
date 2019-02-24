@@ -58,5 +58,16 @@ namespace Vending_Machine.Controllers
             }
             return BadRequest(ModelState);
         } 
+        
+        [HttpPut("[action]")]
+        public IActionResult Decrease([FromBody] Money money)
+        {
+            if(ModelState.IsValid)
+            {
+                _machine.DecreaseMoneyInStorage(money.Id, money.Count);
+                return Ok();
+            }
+            return BadRequest(ModelState);
+        } 
     }
 }
