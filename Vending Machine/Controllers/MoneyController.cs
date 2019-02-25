@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
+using Vending_Machine.Models.Moneys;
 using Vending_Machine.Repositories;
 using Vending_Machine.Seller;
 
@@ -68,6 +69,17 @@ namespace Vending_Machine.Controllers
                 return Ok();
             }
             return BadRequest(ModelState);
-        } 
+        }
+
+        [HttpPut]
+        public IActionResult Edit([FromBody] Money money)
+        {
+            if(ModelState.IsValid)
+            {
+                _machine.UpdateMoney(money);                
+                return Ok();
+            }
+            return BadRequest(ModelState);
+        }
     }
 }

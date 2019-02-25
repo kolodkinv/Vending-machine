@@ -30,6 +30,21 @@ namespace Vending_Machine.Seller
         {
             return _moneyStorage.GetItem(id);
         }
+
+        public void SetEnableMoney(int id, bool enable)
+        {
+            var money = _moneyStorage.GetItem(id);
+            if (money != null && money.Enable != enable)
+            {
+                money.Enable = enable;
+                _moneyStorage.UpdateItem(money);
+            }
+        }
+
+        public void UpdateMoney(Money money)
+        {
+            _moneyStorage.UpdateItem(money);
+        }
         
         public void AddMoneyToBasket(int id, int count = 1)
         {

@@ -26,4 +26,18 @@ export class MoniesService {
     currentMoney.count = count;
     return this.httpClient.put(this.url + 'Decrease', currentMoney);
   }
+
+  public update(money:Money): Observable<any>{
+    return this.httpClient.put(this.url, money);
+  }
+
+  public create(money:Money): Observable<any>{
+    return this.httpClient.post(this.url, money);
+  }
+
+  public changeEnable(money:Money): Observable<any>{
+    let currentMoney = Object.assign({}, money);
+    currentMoney.enable = !currentMoney.enable;
+    return this.httpClient.put(this.url, currentMoney);
+  }
 }

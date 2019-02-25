@@ -21,7 +21,7 @@ namespace Vending_Machine.Storage
 
         public void PutItem(T item)
         {
-            item.Count = 1;
+            //item.Count = 1;
             _repository.Create(item);
         }
 
@@ -85,6 +85,19 @@ namespace Vending_Machine.Storage
             }
 
             throw new NotFoundException($"Объект типа {typeof(T)} не найден");
+        }
+
+        public void UpdateItem(T item)
+        {
+            if (item != null)
+            {
+                _repository.Update(item);
+                
+            }
+            else
+            {
+                throw new NotFoundException($"Объект типа {typeof(T)} не найден");
+            } 
         }
     }
 }

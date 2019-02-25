@@ -15,9 +15,11 @@ export class MoniesComponent implements OnInit{
 
   public monies: Money[];             // Список всех денег
   public currentMoney: Money = new Money();  // Редактируемые деньги
+  public newMoney: Money = new Money();
 
   increaseForm : FormGroup;
   decreaseForm : FormGroup;
+  moneyForm : FormGroup;
 
   constructor(private moniesService: MoniesService){
     this.increaseForm = new FormGroup({
@@ -26,9 +28,19 @@ export class MoniesComponent implements OnInit{
     this.decreaseForm = new FormGroup({
       count: new FormControl(''),
     });
+    this.moneyForm = new FormGroup({
+      name: new FormControl(''),
+      count: new FormControl(''),
+      cost: new FormControl(''),
+      enable: new FormControl('')
+    });
   }
 
   ngOnInit(){
+    this.loadMoneis();
+  }
+
+  loadMoneis(){
     this.moniesService.getAll().subscribe(
       (data:Money[]) => {
         this.monies = data
@@ -44,8 +56,41 @@ export class MoniesComponent implements OnInit{
     this.currentMoney = money;
   }
 
+  addMoney(){
+    this.moniesService.create(this.newMoney).subscribe(
+      () => {
+        this.loadMoneis();
+      },
+      error => {
+        // TODO Ошибка
+      }
+    )
+  }
+
+  updateMoney(){
+    this.moniesService.update(this.newMoney).subscribe(
+      () => {
+        this.loadMoneis();
+      },
+      error => {
+        // TODO Ошибка
+      }
+    )
+  }
+
   cancelEdit(){
     this.currentMoney = new Money();
+  }
+
+  changeEnable(money: Money){
+    this.moniesService.changeEnable(money).subscribe(
+      () => {
+        money.enable = !money.enable;
+      },
+      error => {
+        // TODO Ошибка
+      }
+    )
   }
 
   increase(money: Money){

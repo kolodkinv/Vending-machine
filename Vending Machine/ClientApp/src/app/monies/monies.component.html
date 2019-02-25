@@ -2,50 +2,99 @@
 
 <p *ngIf="!monies"><em>Loading...</em></p>
 
-<table class='table table-striped' *ngIf="monies">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Название</th>
-    <th>Стоимость</th>
-    <th>Количество</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let money of monies" [ngClass]="{'enabled':money.enable,'not_enabled':!money.enable}">
-    <td>{{ money.id }}</td>
-    <td>{{ money.name }}</td>
-    <td>{{ money.cost }}</td>
-    <td>{{ money.count }}</td>
-    <td>
-      <ng-template [ngIf]="currentMoney?.id != money.id" [ngIfElse]="edit">
-        <button class="btn btn-sm btn-primary" (click)="editMoney(money)">Операции</button>
-      </ng-template>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row new-item">
+    <div class="col">
+      <label>
+        Название
+        <input type="text" [(ngModel)]="newMoney.name" class="form-control" />
+      </label>
+    </div>
+    <div class="col">
+      <label>
+        Номинал
+        <input type="text" [(ngModel)]="newMoney.cost" class="form-control" />
+      </label>
+    </div>
+    <div class="col">
+      <label>
+        Количество
+        <input type="text" [(ngModel)]="newMoney.count" class="form-control" />
+      </label>
+    </div>
+    <div class="col">
+      <label>
+        Доступность
+        <input type="checkbox" [(ngModel)]="newMoney.enable" class="form-control" />
+      </label>
+    </div>
+    <div class="col">
+      <button class="btn btn-success operation" (click)="addMoney()">Добавить</button>
+    </div>
+  </div>
+  <div class="row">
+    <table class='table table-striped' *ngIf="monies">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Стоимость</th>
+        <th>Количество</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let money of monies" [ngClass]="{'enabled':money.enable,'not-enabled':!money.enable}">
+        <td>{{ money.id }}</td>
+        <td>{{ money.name }}</td>
+        <td>{{ money.cost }}</td>
+        <td>{{ money.count }}</td>
+        <td>
+          <ng-template [ngIf]="currentMoney?.id != money.id" [ngIfElse]="edit">
+            <button class="btn btn-sm btn-primary" (click)="editMoney(money)">Операции</button>
+          </ng-template>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <!--шаблон для операций-->
 <ng-template #edit>
-  <div>
+  <div class="operation">
     <form [formGroup]="increaseForm" (ngSubmit)="increase(currentMoney)">
-      <label>
-        Количество, шт:
-        <input type="number" formControlName="count">
-      </label>
-      <button type="submit">Добавить</button>
+      <div class="form-row">
+        <div class="col">
+          <label for="icrease_count">Количество, шт</label>
+        </div>
+        <div class="col">
+          <input type="number" id="icrease_count" class="form-control" formControlName="count">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary operation">Добавить</button>
+        </div>
+      </div>
     </form>
   </div>
-  <div>
+  <div class="operation">
     <form [formGroup]="decreaseForm" (ngSubmit)="decrease(currentMoney)">
-      <label>
-        Количество, шт:
-        <input type="number" formControlName="count">
-      </label>
-      <button type="submit">Забрать</button>
+      <div class="form-row">
+        <div class="col">
+          <label for="decrease_count">Количество, шт</label>
+        </div>
+        <div class="col">
+          <input type="number" id="decrease_count" class="form-control" formControlName="count">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary operation">Забрать</button>
+        </div>
+      </div>
     </form>
   </div>
-  <input type="button" value="Выйти" (click)="cancelEdit()" class="btn btn-sm btn-warning" />
+  <div class="operation">
+    <button *ngIf="currentMoney.enable" type="button" (click)="changeEnable(currentMoney)" class="btn btn-warning operation">Заблокировать</button>
+    <button *ngIf="!currentMoney.enable" type="button" (click)="changeEnable(currentMoney)" class="btn btn-success operation">Разблокировать</button>
+    <button type="button" (click)="cancelEdit()" class="btn btn-primary operation">Выйти</button>
+  </div>
 </ng-template>
 
