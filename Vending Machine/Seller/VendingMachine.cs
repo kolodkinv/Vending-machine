@@ -8,20 +8,22 @@ using Vending_Machine.Storage;
 
 namespace Vending_Machine.Seller
 {
-    public class VendingMachine: ISeller
+    public class VendingMachine<TProduct, TMoney> : ISeller
+        where TProduct : Product 
+        where TMoney : Money
     {
-        private readonly Storage<Product> _productStorage;
-        private readonly Storage<Money> _moneyStorage;
+        private readonly Storage<TProduct> _productStorage;
+        private readonly Storage<TMoney> _moneyStorage;
         private readonly Basket _basket;
         
-        public VendingMachine(Storage<Product> productStorage, Storage<Money> moneyStorage)
+        public VendingMachine(Storage<TProduct> productStorage, Storage<TMoney> moneyStorage)
         {
             _productStorage = productStorage;
             _moneyStorage = moneyStorage;
             _basket = new Basket();
         }
 
-        public IEnumerable<Money> GetAllMoneis()
+        public IEnumerable<TMoney> GetAllMoneis()
         {
             return _moneyStorage.GetAll();
         }
@@ -41,7 +43,7 @@ namespace Vending_Machine.Seller
             }
         }
 
-        public void UpdateMoney(Money money)
+        public void UpdateMoney(TMoney money)
         {
             _moneyStorage.UpdateItem(money);
         }
@@ -105,7 +107,7 @@ namespace Vending_Machine.Seller
             return oddMoney;
         }
 
-        public void AddNewMoneyToStorage(Money money)
+        public void AddNewMoneyToStorage(TMoney money)
         {
             _moneyStorage.PutItem(money);   
         }
@@ -120,7 +122,7 @@ namespace Vending_Machine.Seller
             _moneyStorage.DecreaseItem(id, count);
         }
 
-        public void AddNewProductToStorage(Product product)
+        public void AddNewProductToStorage(TProduct product)
         {
             _productStorage.PutItem(product);
         }

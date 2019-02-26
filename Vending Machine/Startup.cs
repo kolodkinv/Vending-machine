@@ -31,11 +31,15 @@ namespace Vending_Machine
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
-            services.AddScoped<VendingMachine>();
-            services.AddScoped<Storage<Product>>();
+            
+            services.AddVendingMachine<Drink, Money, DrinkRepository, MoneyRepository>();
+            /*
+            services.AddScoped<VendingMachine<Drink, Money>>();
+            services.AddScoped<Storage<Drink>>();
             services.AddScoped<Storage<Money>>();
-            services.AddScoped<IRepository<Product>, ProductRepository>();
+            services.AddScoped<IRepository<Drink>, DrinkRepository>();
             services.AddScoped<IRepository<Money>, MoneyRepository>();
+            */
             //services.AddDbContext<MachineContext>(
             //    opt => opt.UseSqlServer("Server=172.17.0.2,1433;Database=Machine4;User Id=SA;Password=ZxcVda!@#123"));
             services.AddDbContext<MachineContext>(options =>

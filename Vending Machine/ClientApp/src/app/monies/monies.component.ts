@@ -17,9 +17,9 @@ export class MoniesComponent implements OnInit{
   public currentMoney: Money = new Money();  // Редактируемые деньги
   public newMoney: Money = new Money();
 
+  errorAdd: string = '';
   increaseForm : FormGroup;
   decreaseForm : FormGroup;
-  moneyForm : FormGroup;
 
   constructor(private moniesService: MoniesService){
     this.increaseForm = new FormGroup({
@@ -27,12 +27,6 @@ export class MoniesComponent implements OnInit{
     });
     this.decreaseForm = new FormGroup({
       count: new FormControl(''),
-    });
-    this.moneyForm = new FormGroup({
-      name: new FormControl(''),
-      count: new FormControl(''),
-      cost: new FormControl(''),
-      enable: new FormControl('')
     });
   }
 
@@ -58,13 +52,15 @@ export class MoniesComponent implements OnInit{
 
   addMoney(){
     this.moniesService.create(this.newMoney).subscribe(
-      () => {
-        this.loadMoneis();
+      (data: Money) => {
+        this.monies.push(data);
       },
       error => {
+        debugger;
         // TODO Ошибка
       }
-    )
+    );
+    this.newMoney = new Money();
   }
 
   updateMoney(){

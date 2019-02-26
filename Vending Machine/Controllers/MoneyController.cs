@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Moneys;
-using Vending_Machine.Repositories;
+using Vending_Machine.Models.Product;
 using Vending_Machine.Seller;
 
 namespace Vending_Machine.Controllers
@@ -12,9 +11,9 @@ namespace Vending_Machine.Controllers
     [Route("api/[controller]")]
     public class MoneyController : Controller
     {
-        private readonly VendingMachine _machine;
+        private readonly VendingMachine<Drink, Money> _machine;
         
-        public MoneyController(VendingMachine machine)
+        public MoneyController(VendingMachine<Drink, Money> machine)
         {
             _machine = machine;
         }

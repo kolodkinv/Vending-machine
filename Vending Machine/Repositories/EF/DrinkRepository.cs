@@ -5,29 +5,29 @@ using Vending_Machine.Models.Product;
 
 namespace Vending_Machine.Repositories.EF
 {
-    public class ProductRepository: IRepository<Product>
+    public class DrinkRepository: IRepository<Drink>
     {
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<Drink> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Product Get(int id)
+        public Drink Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Product> Find(Func<Product, bool> predicate)
+        public IEnumerable<Drink> Find(Func<Drink, bool> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void Create(Product item)
+        public void Create(Drink item)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Product item)
+        public void Update(Drink item)
         {
             throw new NotImplementedException();
         }
