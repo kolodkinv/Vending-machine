@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { MoniesComponent } from './monies/monies.component';
 import { DrinksComponent } from './drinks/drinks.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DrinksComponent } from './drinks/drinks.component';
     NavMenuComponent,
     HomeComponent,
     MoniesComponent,
-    DrinksComponent
+    DrinksComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,8 +27,7 @@ import { DrinksComponent } from './drinks/drinks.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'money', component: MoniesComponent },
-      { path: 'drinks', component: DrinksComponent }
+      { path: 'admin', component: AdminComponent },
     ])
   ],
   providers: [],

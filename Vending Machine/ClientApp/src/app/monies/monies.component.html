@@ -1,7 +1,5 @@
 <h1>Хранилище денег.</h1>
 
-<p *ngIf="!monies"><em>Loading...</em></p>
-
 <div class="row new-item">
   <div class="col">
     <label>
@@ -42,7 +40,7 @@
       <th>Операции</th>
     </tr>
     </thead>
-    <tbody>ы
+    <tbody>
     <tr *ngFor="let money of monies" [ngClass]="{'enabled':money.enable,'not-enabled':!money.enable}">
       <td>{{ money.id }}</td>
       <td>{{ money.name }}</td>

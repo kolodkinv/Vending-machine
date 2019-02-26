@@ -3,6 +3,7 @@ export class Drink {
   name: string;
   count: number;
   cost: number;
+  image: File;
 
   constructor(){
 

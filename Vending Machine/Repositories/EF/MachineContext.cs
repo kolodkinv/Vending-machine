@@ -17,5 +17,6 @@ namespace Vending_Machine.Repositories.EF
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Money> Monies { get; set; }
         public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

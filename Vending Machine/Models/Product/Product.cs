@@ -29,6 +29,8 @@ namespace Vending_Machine.Models.Product
                     throw new ArgumentException("Стоимость товара должна быть больше 0");
                 }
             }
-        }        
+        }   
+        
+        public Image Image { get; set; }
     }
 }

@@ -34,7 +34,7 @@ export class DrinksComponent implements OnInit {
 
   loadDrinks(){
     this.drinksService.getAll().subscribe(
-      (data:Money[]) => {
+      (data:Drink[]) => {
         this.drinks = data
       },
       error => {
@@ -47,6 +47,15 @@ export class DrinksComponent implements OnInit {
     this.increaseForm.setValue({count: 0});
     this.decreaseForm.setValue({count: 0});
     this.editableDrink = drink;
+  }
+
+  onFileChanged(event) {
+    this.drinksService.uploadFile(event.target.files[0]).subscribe(
+      () => {},
+      error => {
+        console.error(error);
+      }
+    )
   }
 
   addDrink(){

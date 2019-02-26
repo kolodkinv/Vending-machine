@@ -28,6 +28,7 @@ namespace Vending_Machine.Seller
             services.AddScoped<IRepository<TProduct>, TProductRepository>();
             services.AddScoped<IRepository<TMoney>, TMoneyRepository>();
             services.AddScoped<VendingMachine<TProduct, TMoney>>();
+            services.AddScoped<IRepository<Image>, ImageRepository>();
         }
         
     }

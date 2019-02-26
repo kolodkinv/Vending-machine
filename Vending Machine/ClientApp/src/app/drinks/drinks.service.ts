@@ -8,6 +8,7 @@ import {Money} from "../monies/monies.model";
 export class DrinksService {
 
   url: string = 'api/Drinks/';
+  urlFiles: string = 'api/Files';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -17,6 +18,7 @@ export class DrinksService {
   }
 
   public create(drink:Drink): Observable<any>{
+    debugger;
     return this.httpClient.post(this.url, drink);
   }
 
@@ -34,5 +36,11 @@ export class DrinksService {
     let currentDrink = Object.assign({}, drink);
     currentDrink.count -= count;
     return this.httpClient.put(this.url, currentDrink);
+  }
+
+  public uploadFile(file:File): Observable<any>{
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.httpClient.post(this.urlFiles, formData);
   }
 }

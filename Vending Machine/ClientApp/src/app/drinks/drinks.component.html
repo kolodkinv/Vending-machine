@@ -1,6 +1,4 @@
-<h1>Хранилище денег.</h1>
-
-<p *ngIf="!drinks"><em>Loading...</em></p>
+<h1>Хранилище напитков.</h1>
 
 <div class="row new-item">
   <div class="col">
@@ -19,6 +17,12 @@
     <label>
       Количество
       <input type="number" [(ngModel)]="newDrink.count" class="form-control" />
+    </label>
+  </div>
+  <div class="col">
+    <label>
+      Изображение
+      <input type="file" accept="image/*" class="form-control" (change)="onFileChanged($event)" />
     </label>
   </div>
   <div class="col">
