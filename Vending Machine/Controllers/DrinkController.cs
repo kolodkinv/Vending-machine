@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
 using Vending_Machine.Models.Product;
@@ -9,11 +6,11 @@ using Vending_Machine.Seller;
 namespace Vending_Machine.Controllers
 {
     [Route("api/[controller]")]
-    public class MoneyController : Controller
+    public class DrinkController : Controller
     {
         private readonly VendingMachine<Drink, Money> _machine;
-        
-        public MoneyController(VendingMachine<Drink, Money> machine)
+
+        public DrinkController(VendingMachine<Drink, Money> machine)
         {
             _machine = machine;
         }
@@ -21,39 +18,39 @@ namespace Vending_Machine.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var moneis = _machine.GetAllMoneis();
-            return Ok(moneis);
+            var drinks = _machine.GetAllProducts();
+            return Ok(drinks);
         }
         
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var money = _machine.GetMoney(id);
-            if (money == null)
+            var drink = _machine.GetProduct(id);
+            if (drink == null)
             {
                 return NotFound();
             }
 
-            return Ok(money);
+            return Ok(drink);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Money money)
+        public IActionResult Create([FromBody]Drink drink)
         {
             if(ModelState.IsValid)
             {
-                _machine.AddNewMoneyToStorage(money);
-                return CreatedAtAction(nameof(Get), new { id = money.Id }, money);
+                _machine.AddNewProductToStorage(drink);
+                return CreatedAtAction(nameof(Get), new { id = drink.Id }, drink);
             }
             return BadRequest(ModelState);
         } 
 
         [HttpPut]
-        public IActionResult Edit([FromBody] Money money)
+        public IActionResult Edit([FromBody] Drink drink)
         {
             if(ModelState.IsValid)
             {
-                _machine.UpdateMoney(money);                
+                _machine.UpdateProduct(drink);                
                 return Ok();
             }
             return BadRequest(ModelState);

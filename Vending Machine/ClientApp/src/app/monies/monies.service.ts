@@ -17,14 +17,14 @@ export class MoniesService {
 
   public increaseCount(money:Money, count:number): Observable<any>{
     let currentMoney = Object.assign({}, money);
-    currentMoney.count = count;
-    return this.httpClient.put(this.url + 'Increase', currentMoney);
+    currentMoney.count += count;
+    return this.httpClient.put(this.url, currentMoney);
   }
 
   public decreaseCount(money:Money, count:number): Observable<any>{
     let currentMoney = Object.assign({}, money);
-    currentMoney.count = count;
-    return this.httpClient.put(this.url + 'Decrease', currentMoney);
+    currentMoney.count -= count;
+    return this.httpClient.put(this.url, currentMoney);
   }
 
   public update(money:Money): Observable<any>{

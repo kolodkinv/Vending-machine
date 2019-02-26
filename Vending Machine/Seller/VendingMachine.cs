@@ -28,9 +28,19 @@ namespace Vending_Machine.Seller
             return _moneyStorage.GetAll();
         }
 
-        public Money GetMoney(int id)
+        public IEnumerable<TProduct> GetAllProducts()
+        {
+            return _productStorage.GetAll();
+        }
+
+        public TMoney GetMoney(int id)
         {
             return _moneyStorage.GetItem(id);
+        }
+
+        public TProduct GetProduct(int id)
+        {
+            return _productStorage.GetItem(id);
         }
 
         public void SetEnableMoney(int id, bool enable)
@@ -46,6 +56,11 @@ namespace Vending_Machine.Seller
         public void UpdateMoney(TMoney money)
         {
             _moneyStorage.UpdateItem(money);
+        }
+
+        public void UpdateProduct(TProduct product)
+        {
+            _productStorage.UpdateItem(product);
         }
         
         public void AddMoneyToBasket(int id, int count = 1)
@@ -112,24 +127,9 @@ namespace Vending_Machine.Seller
             _moneyStorage.PutItem(money);   
         }
 
-        public void IncreaseMoneyInStorage(int id, int count)
-        {
-            _moneyStorage.IncreaseItem(id, count);
-        }
-        
-        public void DecreaseMoneyInStorage(int id, int count)
-        {
-            _moneyStorage.DecreaseItem(id, count);
-        }
-
         public void AddNewProductToStorage(TProduct product)
         {
             _productStorage.PutItem(product);
-        }
-
-        public void IncreaseProductInStorage(int id, int count)
-        {
-            _productStorage.IncreaseItem(id, count);
         }
     }
 }

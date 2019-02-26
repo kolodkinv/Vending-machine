@@ -2,61 +2,59 @@
 
 <p *ngIf="!monies"><em>Loading...</em></p>
 
-<div class="container">
-  <div class="row new-item">
-    <div class="col">
-      <label>
-        Название
-        <input type="text" [(ngModel)]="newMoney.name" class="form-control" />
-      </label>
-    </div>
-    <div class="col">
-      <label>
-        Номинал
-        <input type="number" [(ngModel)]="newMoney.cost" class="form-control" />
-      </label>
-    </div>
-    <div class="col">
-      <label>
-        Количество
-        <input type="number" [(ngModel)]="newMoney.count" class="form-control" />
-      </label>
-    </div>
-    <div class="col">
-      <label>
-        Доступность
-        <input type="checkbox" [(ngModel)]="newMoney.enable" class="form-control" />
-      </label>
-    </div>
-    <div class="col">
-      <button class="btn btn-success operation" (click)="addMoney()">Добавить</button>
-    </div>
+<div class="row new-item">
+  <div class="col">
+    <label>
+      Название
+      <input type="text" [(ngModel)]="newMoney.name" class="form-control" />
+    </label>
   </div>
-  <div class="row">
-    <table class='table table-striped' *ngIf="monies">
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Стоимость</th>
-        <th>Количество</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let money of monies" [ngClass]="{'enabled':money.enable,'not-enabled':!money.enable}">
-        <td>{{ money.id }}</td>
-        <td>{{ money.name }}</td>
-        <td>{{ money.cost }}</td>
-        <td>{{ money.count }}</td>
-        <td>
-          <ng-template [ngIf]="currentMoney?.id != money.id" [ngIfElse]="edit">
-            <button class="btn btn-sm btn-primary" (click)="editMoney(money)">Операции</button>
-          </ng-template>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="col">
+    <label>
+      Номинал
+      <input type="number" [(ngModel)]="newMoney.cost" class="form-control" />
+    </label>
   </div>
+  <div class="col">
+    <label>
+      Количество
+      <input type="number" [(ngModel)]="newMoney.count" class="form-control" />
+    </label>
+  </div>
+  <div class="col">
+    <label>
+      Доступность
+      <input type="checkbox" [(ngModel)]="newMoney.enable" class="form-control" />
+    </label>
+  </div>
+  <div class="col">
+    <button class="btn btn-success operation" (click)="addMoney()">Добавить</button>
+  </div>
+</div>
+<div class="row">
+  <table class='table table-striped' *ngIf="monies">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Название</th>
+      <th>Стоимость</th>
+      <th>Количество</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let money of monies" [ngClass]="{'enabled':money.enable,'not-enabled':!money.enable}">
+      <td>{{ money.id }}</td>
+      <td>{{ money.name }}</td>
+      <td>{{ money.cost }}</td>
+      <td>{{ money.count }}</td>
+      <td>
+        <ng-template [ngIf]="currentMoney?.id != money.id" [ngIfElse]="edit">
+          <button class="btn btn-sm btn-primary" (click)="editMoney(money)">Операции</button>
+        </ng-template>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
 <!--шаблон для операций-->
