@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Vending_Machine.Exceptions;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
 
 namespace Vending_Machine.Seller
 {
@@ -17,11 +17,11 @@ namespace Vending_Machine.Seller
         private double _amount;
         private double _oddMoney;
 
+        [Key]
+        public int Id { get; private set; }
         public IList<Product> Products { get; private set; }
         public IList<Money> Money { get; private set; }
         
-        [Key]
-        public string Session { get; private set; }
         public double Amount
         {
             get { return _amount; }

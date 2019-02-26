@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Vending_Machine.Models;
 
 namespace Vending_Machine.Repositories.EF
@@ -44,7 +45,22 @@ namespace Vending_Machine.Repositories.EF
         {
             throw new NotImplementedException();
         }
-        
+
+        public IEnumerable<Image> GetWithInclude(params Expression<Func<Image, object>>[] includeProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Image> GetWithInclude(Func<Image, bool> predicate, params Expression<Func<Image, object>>[] includeProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Image> Include(params Expression<Func<Image, object>>[] includeProperties)
+        {
+            throw new NotImplementedException();
+        }
+
         private bool _disposed = false;
  
         public virtual void Dispose(bool disposing)

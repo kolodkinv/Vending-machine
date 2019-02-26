@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Drink} from "./drinks.model";
+import {Drink, Image} from "./drinks.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {DrinksService} from "./drinks.service";
 import {Money} from "../monies/monies.model";
@@ -15,6 +15,7 @@ export class DrinksComponent implements OnInit {
   public drinks: Drink[];
   public editableDrink: Drink = new Drink();
   public newDrink: Drink = new Drink();
+  public newPictute: Image;
 
   increaseForm : FormGroup;
   decreaseForm : FormGroup;
@@ -51,7 +52,9 @@ export class DrinksComponent implements OnInit {
 
   onFileChanged(event) {
     this.drinksService.uploadFile(event.target.files[0]).subscribe(
-      () => {},
+      (data: Image) => {
+        this.newPictute = data;
+      },
       error => {
         console.error(error);
       }
@@ -59,8 +62,11 @@ export class DrinksComponent implements OnInit {
   }
 
   addDrink(){
+    this.newDrink.image = this.newPictute;
     this.drinksService.create(this.newDrink).subscribe(
+
       (data: Drink) => {
+        debugger;
         this.drinks.push(data);
       },
       error => {

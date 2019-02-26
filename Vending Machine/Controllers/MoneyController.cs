@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
 using Vending_Machine.Seller;
 
 namespace Vending_Machine.Controllers

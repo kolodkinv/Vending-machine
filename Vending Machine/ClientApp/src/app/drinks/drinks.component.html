@@ -33,7 +33,7 @@
   <table class='table table-striped' *ngIf="drinks">
     <thead>
     <tr>
-      <th>ID</th>
+      <th style="width: 30%;">Этикетка</th>
       <th>Название</th>
       <th>Стоимость</th>
       <th>Количество</th>
@@ -42,7 +42,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let drink of drinks" >
-      <td>{{ drink.id }}</td>
+      <td><img src="data:image/JPEG;base64,{{drink.image.normalImage}}" style="width: 30%"></td>
       <td>{{ drink.name }}</td>
       <td>{{ drink.cost }}</td>
       <td>{{ drink.count }}</td>

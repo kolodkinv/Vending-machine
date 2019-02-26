@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
+using Vending_Machine.Repositories;
+using Vending_Machine.Repositories.EF;
 using Vending_Machine.Seller;
 
 namespace Vending_Machine.Controllers
@@ -9,10 +11,12 @@ namespace Vending_Machine.Controllers
     public class DrinksController : Controller
     {
         private readonly VendingMachine<Drink, Money> _machine;
+        private readonly IRepository<Image> _imageRepository;
 
-        public DrinksController(VendingMachine<Drink, Money> machine)
+        public DrinksController(VendingMachine<Drink, Money> machine, IRepository<Image> imageRepository)
         {
             _machine = machine;
+            _imageRepository = imageRepository;
         }
 
         [HttpGet]
@@ -39,6 +43,8 @@ namespace Vending_Machine.Controllers
         {
             if(ModelState.IsValid)
             {
+                var image = _imageRepository.Get(drink.Image.Id);
+                drink.Image = image;
                 _machine.AddNewProductToStorage(drink);
                 return CreatedAtAction(nameof(Get), new { id = drink.Id }, drink);
             }

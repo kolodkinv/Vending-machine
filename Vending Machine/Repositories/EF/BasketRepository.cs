@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Vending_Machine.Seller;
 
 namespace Vending_Machine.Repositories.EF
@@ -35,7 +37,22 @@ namespace Vending_Machine.Repositories.EF
         {
             throw new NotImplementedException();
         }
-        
+
+        public IEnumerable<Basket> GetWithInclude(params Expression<Func<Basket, object>>[] includeProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Basket> GetWithInclude(Func<Basket, bool> predicate, params Expression<Func<Basket, object>>[] includeProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Basket> Include(params Expression<Func<Basket, object>>[] includeProperties)
+        {
+            throw new NotImplementedException();
+        }
+
         private bool _disposed = false;
  
         public virtual void Dispose(bool disposing)

@@ -3,9 +3,13 @@ export class Drink {
   name: string;
   count: number;
   cost: number;
-  image: File;
+  image: Image;
 
   constructor(){
-
   }
+}
+
+export class Image {
+  id: number;
+  normalImage: string;
 }

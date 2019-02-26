@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
 using Vending_Machine.Storage;
 using Vending_Machine.Repositories;
 using Vending_Machine.Repositories.EF;
@@ -33,6 +33,7 @@ namespace Vending_Machine
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
             services.AddVendingMachine<Drink, Money, DrinkRepository, MoneyRepository>();
+            services.AddScoped<IRepository<Image>, ImageRepository>();
             /*
             services.AddScoped<VendingMachine<Drink, Money>>();
             services.AddScoped<Storage<Drink>>();

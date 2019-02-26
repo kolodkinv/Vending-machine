@@ -3,7 +3,7 @@ using System.Drawing.Printing;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Vending_Machine.Exceptions;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
 using Vending_Machine.Storage;
 
 namespace Vending_Machine.Seller
@@ -23,6 +23,11 @@ namespace Vending_Machine.Seller
             _basket = new Basket();
         }
 
+        public void CreateBasket(int id)
+        {
+            
+        }
+
         public IEnumerable<TMoney> GetAllMoneis()
         {
             return _moneyStorage.GetAll();
@@ -30,7 +35,7 @@ namespace Vending_Machine.Seller
 
         public IEnumerable<TProduct> GetAllProducts()
         {
-            return _productStorage.GetAll();
+            return _productStorage.GetAllWithInclude(p => p.Image);
         }
 
         public TMoney GetMoney(int id)

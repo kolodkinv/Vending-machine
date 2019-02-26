@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
 using Vending_Machine.Seller;
 
 namespace Vending_Machine.Repositories.EF
@@ -12,6 +12,19 @@ namespace Vending_Machine.Repositories.EF
         {
             Database.EnsureCreated();
         }
+        
+        /*
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+            modelBuilder.Entity<Product>()
+                .HasOne(a => a.Image)
+                .WithOne(b => b.Product)
+                .HasForeignKey<Image>(b => b.ProductId);
+
+            base.OnModelCreating(modelBuilder);
+        }
+        */
         
         public DbSet<Product> Products { get; set; }
         public DbSet<Drink> Drinks { get; set; }

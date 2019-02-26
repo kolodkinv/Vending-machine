@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Vending_Machine.Exceptions;
 using Vending_Machine.Repositories;
@@ -68,6 +69,11 @@ namespace Vending_Machine.Storage
         public IEnumerable<T> GetAll()
         {
             return _repository.GetAll();
+        }
+
+        public IEnumerable<T> GetAllWithInclude(params Expression<Func<T, object>>[] includeProperties)
+        {
+            return _repository.GetWithInclude(includeProperties);
         }
 
         public int GetCount(int id)

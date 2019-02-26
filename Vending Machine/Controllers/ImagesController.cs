@@ -1,12 +1,14 @@
+using System;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
 using Vending_Machine.Repositories;
 using Vending_Machine.Seller;
 
 namespace Vending_Machine.Controllers
 {
+    [Route("api/[controller]")]
     public class ImagesController : Controller
     {
         private readonly IRepository<Image> _repository;
@@ -31,7 +33,6 @@ namespace Vending_Machine.Controllers
             {
                 return NotFound();
             }
-
             return Ok(image);
         }
         

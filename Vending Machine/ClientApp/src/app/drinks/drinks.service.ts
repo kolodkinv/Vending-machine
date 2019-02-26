@@ -2,13 +2,12 @@ import {Drink} from "./drinks.model";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Money} from "../monies/monies.model";
 
 @Injectable()
 export class DrinksService {
 
   url: string = 'api/Drinks/';
-  urlFiles: string = 'api/Files';
+  urlFiles: string = 'api/Images';
 
   constructor(private httpClient: HttpClient) {
   }

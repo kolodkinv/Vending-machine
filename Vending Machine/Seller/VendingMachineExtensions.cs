@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Vending_Machine.Models;
-using Vending_Machine.Models.Product;
+using Vending_Machine.Models.Products;
 using Vending_Machine.Repositories;
 using Vending_Machine.Repositories.EF;
 using Vending_Machine.Storage;
@@ -25,8 +25,8 @@ namespace Vending_Machine.Seller
         {
             services.AddScoped<Storage<TProduct>>();
             services.AddScoped<Storage<TMoney>>();
-            services.AddScoped<IRepository<TProduct>, TProductRepository>();
-            services.AddScoped<IRepository<TMoney>, TMoneyRepository>();
+            services.AddScoped<IRepository<TProduct>, EFRepository<TProduct>>();
+            services.AddScoped<IRepository<TMoney>, EFRepository<TMoney>>();
             services.AddScoped<VendingMachine<TProduct, TMoney>>();
             services.AddScoped<IRepository<Image>, ImageRepository>();
         }
