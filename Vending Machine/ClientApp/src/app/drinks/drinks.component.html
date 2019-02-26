@@ -1,56 +1,50 @@
 <h1>Хранилище денег.</h1>
 
-<p *ngIf="!monies"><em>Loading...</em></p>
+<p *ngIf="!drinks"><em>Loading...</em></p>
 
 <div class="row new-item">
   <div class="col">
     <label>
       Название
-      <input type="text" [(ngModel)]="newMoney.name" class="form-control" />
+      <input type="text" [(ngModel)]="newDrink.name" class="form-control" />
     </label>
   </div>
   <div class="col">
     <label>
-      Номинал
-      <input type="number" [(ngModel)]="newMoney.cost" class="form-control" />
+      Стоимость
+      <input type="number" [(ngModel)]="newDrink.cost" class="form-control" />
     </label>
   </div>
   <div class="col">
     <label>
       Количество
-      <input type="number" [(ngModel)]="newMoney.count" class="form-control" />
+      <input type="number" [(ngModel)]="newDrink.count" class="form-control" />
     </label>
   </div>
   <div class="col">
-    <label>
-      Доступность
-      <input type="checkbox" [(ngModel)]="newMoney.enable" class="form-control" />
-    </label>
-  </div>
-  <div class="col">
-    <button class="btn btn-success operation" (click)="addMoney()">Добавить</button>
+    <button class="btn btn-success operation" (click)="addDrink()">Добавить</button>
   </div>
 </div>
 <div class="row">
-  <table class='table table-striped' *ngIf="monies">
+  <table class='table table-striped' *ngIf="drinks">
     <thead>
     <tr>
       <th>ID</th>
       <th>Название</th>
-      <th>Номинал</th>
+      <th>Стоимость</th>
       <th>Количество</th>
       <th>Операции</th>
     </tr>
     </thead>
-    <tbody>ы
-    <tr *ngFor="let money of monies" [ngClass]="{'enabled':money.enable,'not-enabled':!money.enable}">
-      <td>{{ money.id }}</td>
-      <td>{{ money.name }}</td>
-      <td>{{ money.cost }}</td>
-      <td>{{ money.count }}</td>
+    <tbody>
+    <tr *ngFor="let drink of drinks" >
+      <td>{{ drink.id }}</td>
+      <td>{{ drink.name }}</td>
+      <td>{{ drink.cost }}</td>
+      <td>{{ drink.count }}</td>
       <td>
-        <ng-template [ngIf]="currentMoney?.id != money.id" [ngIfElse]="edit">
-          <button class="btn btn-sm btn-primary" (click)="editMoney(money)">Операции</button>
+        <ng-template [ngIf]="editableDrink?.id != drink.id" [ngIfElse]="edit">
+          <button class="btn btn-sm btn-primary" (click)="editDrink(drink)">Операции</button>
         </ng-template>
       </td>
     </tr>
@@ -61,7 +55,7 @@
 <!--шаблон для операций-->
 <ng-template #edit>
   <div class="operation">
-    <form [formGroup]="increaseForm" (ngSubmit)="increase(currentMoney)">
+    <form [formGroup]="increaseForm" (ngSubmit)="increase(editableDrink)">
       <div class="form-row">
         <div class="col">
           <label for="icrease_count">Количество, шт</label>
@@ -76,7 +70,7 @@
     </form>
   </div>
   <div class="operation">
-    <form [formGroup]="decreaseForm" (ngSubmit)="decrease(currentMoney)">
+    <form [formGroup]="decreaseForm" (ngSubmit)="decrease(editableDrink)">
       <div class="form-row">
         <div class="col">
           <label for="decrease_count">Количество, шт</label>
@@ -91,8 +85,6 @@
     </form>
   </div>
   <div class="operation">
-    <button *ngIf="currentMoney.enable" type="button" (click)="changeEnable(currentMoney)" class="btn btn-warning operation">Заблокировать</button>
-    <button *ngIf="!currentMoney.enable" type="button" (click)="changeEnable(currentMoney)" class="btn btn-success operation">Разблокировать</button>
     <button type="button" (click)="cancelEdit()" class="btn btn-primary operation">Выйти</button>
   </div>
 </ng-template>

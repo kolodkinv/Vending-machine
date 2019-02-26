@@ -13,11 +13,10 @@ import {Money} from "./monies.model";
 })
 export class MoniesComponent implements OnInit{
 
-  public monies: Money[];             // Список всех денег
-  public currentMoney: Money = new Money();  // Редактируемые деньги
+  public monies: Money[];
+  public currentMoney: Money = new Money();
   public newMoney: Money = new Money();
 
-  errorAdd: string = '';
   increaseForm : FormGroup;
   decreaseForm : FormGroup;
 

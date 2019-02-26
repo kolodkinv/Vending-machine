@@ -6,11 +6,11 @@ using Vending_Machine.Seller;
 namespace Vending_Machine.Controllers
 {
     [Route("api/[controller]")]
-    public class DrinkController : Controller
+    public class DrinksController : Controller
     {
         private readonly VendingMachine<Drink, Money> _machine;
 
-        public DrinkController(VendingMachine<Drink, Money> machine)
+        public DrinksController(VendingMachine<Drink, Money> machine)
         {
             _machine = machine;
         }
