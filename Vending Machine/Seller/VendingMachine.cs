@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Vending_Machine.Exceptions;
 using Vending_Machine.Models;
@@ -8,26 +9,31 @@ using Vending_Machine.Repositories;
 
 namespace Vending_Machine.Seller
 {
-    public class VendingMachine<TProduct, TMoney> : ISeller
+    public class VendingMachine<TProduct, TMoney> : IMultySeller
         where TProduct : Product 
         where TMoney : Money
     {
         private readonly IRepository<TProduct> _productStorage;
         private readonly IRepository<TMoney> _moneyStorage;
         private readonly IRepository<Basket> _basketStorage;
-        private readonly Basket _basket;
         
         public VendingMachine(IRepository<TProduct> productStorage, IRepository<TMoney> moneyStorage, IRepository<Basket> basketStorage)
         {
             _productStorage = productStorage;
             _moneyStorage = moneyStorage;
-            _basketStorage = basketStorage;
-            _basket = new Basket();
+            _basketStorage = basketStorage;        
         }
 
-        public void CreateBasket(int id)
+        public Basket CreateBasket()
         {
-            
+            var basket = new Basket();
+            _basketStorage.Create(basket);
+            return basket;
+        }
+
+        public Basket GetBasket(int id)
+        {
+            return _basketStorage.Get(id);
         }
 
         public IEnumerable<TMoney> GetAllMoneis()
@@ -50,16 +56,6 @@ namespace Vending_Machine.Seller
             return _productStorage.Get(id);
         }
 
-        public void SetEnableMoney(int id, bool enable)
-        {
-            var money = _moneyStorage.Get(id);
-            if (money != null && money.Enable != enable)
-            {
-                money.Enable = enable;
-                _moneyStorage.Update(money);
-            }
-        }
-
         public void UpdateMoney(TMoney money)
         {
             _moneyStorage.Update(money);
@@ -70,15 +66,23 @@ namespace Vending_Machine.Seller
             _productStorage.Update(product);
         }
         
-        public void AddMoneyToBasket(int id, int count = 1)
+        public void AddMoneyToBasket(int idBasket, int idMoney, int count = 1)
         {
-            var money = _moneyStorage.Get(id);
+            var money = _moneyStorage.Get(idMoney);
             if (money != null)
             {
                 if (money.Enable)
                 {
                     money.Count = count;
-                    _basket.AddMoney(money);    
+                    var basket = _basketStorage.Get(idBasket);
+                    if (basket != null)
+                    {
+                        basket.AddMoney(money);  
+                    }
+                    else
+                    {
+                        throw new NotFoundException("Корзина не найдена");
+                    }
                 }
                 else
                 {
@@ -91,13 +95,21 @@ namespace Vending_Machine.Seller
             }
         }
 
-        public void AddProductToBasket(int id, int count = 1)
+        public void AddProductToBasket(int idBasket, int idProduct, int count = 1)
         {
-            var product = _productStorage.Get(id);
+            var product = _productStorage.Get(idProduct);
             if (product != null)
             {
                 product.Count = count;
-                _basket.AddProducts(product); 
+                var basket = _basketStorage.Get(idBasket);
+                if (basket != null)
+                {
+                    basket.AddProducts(product);  
+                }
+                else
+                {
+                    throw new NotFoundException("Корзина не найдена");
+                } 
             }
             else
             {
@@ -109,22 +121,34 @@ namespace Vending_Machine.Seller
         /// Купить текущее содержимое корзины
         /// </summary>
         /// <returns></returns>
-        public double Sell()
+        public double Sell(int id)
         {
+            var basket = _basketStorage.GetAll().First();
             var oddMoney = 0.0;
-            if (_basket.IsCorrectPayment())
+            if (basket != null && basket.IsCorrectPayment())
             {
-                foreach (var product in _basket.Products)
+                foreach (var product in basket.Products)
                 {
-                    //_productStorage.DecreaseItem(product.Id, product.Count);
+                    var productInStore = _productStorage.Get(product.Id);
+                    if (productInStore != null)
+                    {
+                        productInStore.Count -= product.Count;
+                        _productStorage.Update(productInStore);
+                    }          
                 }
 
-                foreach (var money in _basket.Money)
+                foreach (var money in basket.Money)
                 {
-                    //_moneyStorage.IncreaseItem(money.Id, money.Count);
+                    var moneyInStore = _moneyStorage.Get(money.Id);
+                    if (moneyInStore != null)
+                    {
+                        moneyInStore.Count += moneyInStore.Count;
+                        _moneyStorage.Update(moneyInStore);
+                    }     
                 }
 
-                oddMoney = _basket.OddMoney;
+                oddMoney = basket.OddMoney;
+                _basketStorage.Delete(basket.Id);
             }
 
             return oddMoney;

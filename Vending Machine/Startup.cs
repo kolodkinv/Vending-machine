@@ -31,7 +31,7 @@ namespace Vending_Machine
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
-            services.AddVendingMachine<Drink, Money, EFRepository<Drink>, EFRepository<Money>>();
+            services.AddVendingMachineEF<Drink, Money>();
             services.AddScoped<IRepository<Image>, EFRepository<Image>>();
 
             //services.AddDbContext<MachineContext>(

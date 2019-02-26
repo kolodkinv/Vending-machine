@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO.Compression;
 using Vending_Machine.Models;
 using Vending_Machine.Models.Products;
