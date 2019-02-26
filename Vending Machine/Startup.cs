@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Vending_Machine.Models;
 using Vending_Machine.Models.Products;
-using Vending_Machine.Storage;
 using Vending_Machine.Repositories;
 using Vending_Machine.Repositories.EF;
 using Vending_Machine.Seller;
@@ -32,15 +31,9 @@ namespace Vending_Machine
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
-            services.AddVendingMachine<Drink, Money, DrinkRepository, MoneyRepository>();
-            services.AddScoped<IRepository<Image>, ImageRepository>();
-            /*
-            services.AddScoped<VendingMachine<Drink, Money>>();
-            services.AddScoped<Storage<Drink>>();
-            services.AddScoped<Storage<Money>>();
-            services.AddScoped<IRepository<Drink>, DrinkRepository>();
-            services.AddScoped<IRepository<Money>, MoneyRepository>();
-            */
+            services.AddVendingMachine<Drink, Money, EFRepository<Drink>, EFRepository<Money>>();
+            services.AddScoped<IRepository<Image>, EFRepository<Image>>();
+
             //services.AddDbContext<MachineContext>(
             //    opt => opt.UseSqlServer("Server=172.17.0.2,1433;Database=Machine4;User Id=SA;Password=ZxcVda!@#123"));
             services.AddDbContext<MachineContext>(options =>

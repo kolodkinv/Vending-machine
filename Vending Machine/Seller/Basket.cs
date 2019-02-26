@@ -12,7 +12,7 @@ namespace Vending_Machine.Seller
     /// <summary>
     /// Корзина торгового автомата
     /// </summary>
-    public class Basket
+    public class Basket : IBasket
     {
         private double _amount;
         private double _oddMoney;
@@ -78,19 +78,18 @@ namespace Vending_Machine.Seller
             }
         }
 
-        public void AddProducts(Product product, int count)
+        public void AddProducts(Product product)
         {
-            OddMoney -= product.Cost * count;
+            OddMoney -= product.Cost * product.Count;
             var productInBasket = Products.FirstOrDefault(p => p.Id == product.Id);
             if (productInBasket == null)
             {
-                product.Count = count;
                 Products.Append(product);
             }
             else
             {
                 var index = Products.IndexOf(productInBasket);
-                Products[index].Count += count;
+                Products[index].Count += product.Count;
             }         
         }
 
@@ -98,7 +97,12 @@ namespace Vending_Machine.Seller
         {
             return Products.Aggregate(0.0, (total, next) => next.Cost * next.Count + total);
         }
-        
+
+        public double GetOddMoney()
+        {
+            return OddMoney;
+        }
+
         public bool IsCorrectPayment()
         {
             if (Amount >= GetTotalCost() && Products.Count > 0)

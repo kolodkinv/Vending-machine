@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Vending_Machine.Exceptions;
 using Vending_Machine.Models;
 using Vending_Machine.Models.Products;
-using Vending_Machine.Storage;
+using Vending_Machine.Repositories;
 
 namespace Vending_Machine.Seller
 {
@@ -12,14 +12,16 @@ namespace Vending_Machine.Seller
         where TProduct : Product 
         where TMoney : Money
     {
-        private readonly Storage<TProduct> _productStorage;
-        private readonly Storage<TMoney> _moneyStorage;
+        private readonly IRepository<TProduct> _productStorage;
+        private readonly IRepository<TMoney> _moneyStorage;
+        private readonly IRepository<Basket> _basketStorage;
         private readonly Basket _basket;
         
-        public VendingMachine(Storage<TProduct> productStorage, Storage<TMoney> moneyStorage)
+        public VendingMachine(IRepository<TProduct> productStorage, IRepository<TMoney> moneyStorage, IRepository<Basket> basketStorage)
         {
             _productStorage = productStorage;
             _moneyStorage = moneyStorage;
+            _basketStorage = basketStorage;
             _basket = new Basket();
         }
 
@@ -35,42 +37,42 @@ namespace Vending_Machine.Seller
 
         public IEnumerable<TProduct> GetAllProducts()
         {
-            return _productStorage.GetAllWithInclude(p => p.Image);
+            return _productStorage.GetWithInclude(p => p.Image);
         }
 
         public TMoney GetMoney(int id)
         {
-            return _moneyStorage.GetItem(id);
+            return _moneyStorage.Get(id);
         }
 
         public TProduct GetProduct(int id)
         {
-            return _productStorage.GetItem(id);
+            return _productStorage.Get(id);
         }
 
         public void SetEnableMoney(int id, bool enable)
         {
-            var money = _moneyStorage.GetItem(id);
+            var money = _moneyStorage.Get(id);
             if (money != null && money.Enable != enable)
             {
                 money.Enable = enable;
-                _moneyStorage.UpdateItem(money);
+                _moneyStorage.Update(money);
             }
         }
 
         public void UpdateMoney(TMoney money)
         {
-            _moneyStorage.UpdateItem(money);
+            _moneyStorage.Update(money);
         }
 
         public void UpdateProduct(TProduct product)
         {
-            _productStorage.UpdateItem(product);
+            _productStorage.Update(product);
         }
         
         public void AddMoneyToBasket(int id, int count = 1)
         {
-            var money = _moneyStorage.GetItem(id);
+            var money = _moneyStorage.Get(id);
             if (money != null)
             {
                 if (money.Enable)
@@ -91,10 +93,11 @@ namespace Vending_Machine.Seller
 
         public void AddProductToBasket(int id, int count = 1)
         {
-            var product = _productStorage.GetItem(id);
+            var product = _productStorage.Get(id);
             if (product != null)
             {
-                _basket.AddProducts(product, count); 
+                product.Count = count;
+                _basket.AddProducts(product); 
             }
             else
             {
@@ -113,12 +116,12 @@ namespace Vending_Machine.Seller
             {
                 foreach (var product in _basket.Products)
                 {
-                    _productStorage.DecreaseItem(product.Id, product.Count);
+                    //_productStorage.DecreaseItem(product.Id, product.Count);
                 }
 
                 foreach (var money in _basket.Money)
                 {
-                    _moneyStorage.IncreaseItem(money.Id, money.Count);
+                    //_moneyStorage.IncreaseItem(money.Id, money.Count);
                 }
 
                 oddMoney = _basket.OddMoney;
@@ -129,12 +132,12 @@ namespace Vending_Machine.Seller
 
         public void AddNewMoneyToStorage(TMoney money)
         {
-            _moneyStorage.PutItem(money);   
+            _moneyStorage.Create(money);   
         }
 
         public void AddNewProductToStorage(TProduct product)
         {
-            _productStorage.PutItem(product);
+            _productStorage.Create(product);
         }
     }
 }

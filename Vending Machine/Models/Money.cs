@@ -1,11 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Vending_Machine.Storage;
 
 namespace Vending_Machine.Models
 {
-    public class Money : ICount
+    public class Money
     {
         private double _cost;
         private int _count;

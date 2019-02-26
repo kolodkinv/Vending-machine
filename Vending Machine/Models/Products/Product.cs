@@ -1,11 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Vending_Machine.Storage;
 
 namespace Vending_Machine.Models.Products
 {
-    public class Product : ICount
+    public class Product
     {
         private double _cost;    // стоимость в рублях
 
