@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace Vending_Machine.Models
 {
     public class Money
     {
-        private double _cost;
+        private int _cost;
         private int _count;
         
         [Key]
@@ -28,23 +30,26 @@ namespace Vending_Machine.Models
             }
         }
         // TODO Убрать кодировку
-        [Column(TypeName = "varchar(128) character set utf8")]
+        //[Column(TypeName = "varchar(128) character set utf8")]
         public string Name { get; set; }
-        public double Cost
+        public int Cost
         {
             get => _cost;
             set
             {
-                if (value > 0)
+                var availableCosts = new[] {1, 2, 5, 10};
+                if (availableCosts.Contains(value))
                 {
                     _cost = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Номинал должен быть больше 0");
+                    throw new ArgumentException("Данный номинал не принимается");
                 }
             }
         }
         public bool Enable { get; set; }
+
+        public ICollection<MoneyBasket> MoneyBaskets { get; set; }
     }
 }

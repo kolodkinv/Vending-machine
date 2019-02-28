@@ -27,6 +27,8 @@
         <Content Include="ClientApp\src\app\drinks\drinks.service.ts" />
         <Content Include="ClientApp\src\app\monies\monies.model.ts" />
         <Content Include="ClientApp\src\app\monies\monies.service.ts" />
+        <Content Include="ClientApp\src\app\shop-window\shop-window.model.ts" />
+        <Content Include="ClientApp\src\app\shop-window\shop-window.service.ts" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     </ItemGroup>

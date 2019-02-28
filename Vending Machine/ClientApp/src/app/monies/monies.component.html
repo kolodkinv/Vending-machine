@@ -4,7 +4,9 @@
   <div class="col">
     <label>
       Название
-      <input type="text" [(ngModel)]="newMoney.name" class="form-control" />
+      <select [(ngModel)]="newMoney.name" class="form-control">
+        <option selected value="Рубли">Рубли</option>
+      </select>`
     </label>
   </div>
   <div class="col">

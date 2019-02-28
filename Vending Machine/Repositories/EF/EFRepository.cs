@@ -42,6 +42,11 @@ namespace Vending_Machine.Repositories.EF
             _context.Entry(item).State = EntityState.Modified;
             _context.SaveChanges();
         }
+        
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
 
         public void Delete(int id)
         {

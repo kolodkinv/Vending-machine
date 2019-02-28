@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { MoniesComponent } from './monies/monies.component';
 import { DrinksComponent } from './drinks/drinks.component';
 import { AdminComponent } from './admin/admin.component';
+import { ShopWindowComponent } from './shop-window/shop-window.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     MoniesComponent,
     DrinksComponent,
-    AdminComponent
+    AdminComponent,
+    ShopWindowComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

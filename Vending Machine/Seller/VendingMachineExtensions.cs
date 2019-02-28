@@ -21,7 +21,10 @@ namespace Vending_Machine.Seller
             services.AddScoped<IRepository<TProduct>, EFRepository<TProduct>>();
             services.AddScoped<IRepository<TMoney>, EFRepository<TMoney>>();
             services.AddScoped<IRepository<Basket>, EFRepository<Basket>>();
+            services.AddScoped<IRepository<MoneyBasket>, EFRepository<MoneyBasket>>();
+            services.AddScoped<IBasketHandler, BasketHandler>();
             services.AddScoped<VendingMachine<TProduct, TMoney>>();
+            services.AddScoped<UnitOfWorkEF>();
         }
         
     }
