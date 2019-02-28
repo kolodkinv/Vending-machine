@@ -11,13 +11,11 @@ namespace Vending_Machine.Models.Products
 
         public int Id { get; set; }
         public int Count { get; set; }
-        // TODO Убрать кодировку
-        [Column(TypeName = "varchar(128) character set utf8")]
         public string Name { get; set; }
+        public Image Image { get; set; }
         public int Cost
         {
             get { return _cost; }
-
             set
             {
                 if (value >= 0)
@@ -29,8 +27,6 @@ namespace Vending_Machine.Models.Products
                     throw new ArgumentException("Стоимость товара должна быть больше 0");
                 }
             }
-        }   
-        
-        public Image Image { get; set; }
+        }       
     }
 }

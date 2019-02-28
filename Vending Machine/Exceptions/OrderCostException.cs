@@ -5,9 +5,9 @@ namespace Vending_Machine.Exceptions
     /// <summary>
     /// Исключение возникающее при переполнении стоимости товаров.
     /// </summary>
-    public class BasketCostException: Exception
+    public class OrderCostException: Exception
     {
-        public BasketCostException(string message)
+        public OrderCostException(string message)
             : base(message)
         { }
     }

@@ -40,7 +40,7 @@ namespace Vending_Machine.Models
                 }
                 else
                 {
-                    throw new BasketCostException("Стоимость заказа превышает сумму внесенных денег");
+                    throw new OrderCostException("Стоимость заказа превышает сумму внесенных денег");
                 }
             }
         }

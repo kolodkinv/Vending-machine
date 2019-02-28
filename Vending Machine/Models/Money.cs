@@ -29,8 +29,7 @@ namespace Vending_Machine.Models
                 }
             }
         }
-        // TODO Убрать кодировку
-        //[Column(TypeName = "varchar(128) character set utf8")]
+
         public string Name { get; set; }
         public int Cost
         {
