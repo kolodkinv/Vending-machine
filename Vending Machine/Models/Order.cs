@@ -1,19 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Vending_Machine.Exceptions;
-using Vending_Machine.Models.Products;
 
 namespace Vending_Machine.Models
 {
-    public class Basket
+    public class Order
     {
         private double _amount;
         private double _oddMoney;
-
-        [Key] public int Id { get; set; }
-        public ICollection<ProductBasket> ProductBaskets { get; set; }
-        public ICollection<MoneyBasket> MoneyBaskets { get; set; }
+ 
+        public int Id { get; set; }
+        public IList<ProductInOrder> Products { get; set; }
+        public IList<MoneyInOrder> Money { get; set; }
 
         public double Amount
         {

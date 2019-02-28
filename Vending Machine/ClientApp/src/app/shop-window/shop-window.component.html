@@ -4,7 +4,7 @@
       <span class="text-muted">Текущая покупка</span>
     </h4>
     <ul class="list-group mb-3">
-      <li *ngFor="let drink of basket.drinks" class="list-group-item d-flex justify-content-between lh-condensed">
+      <li *ngFor="let drink of order.products" class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
           <h6 class="my-0">{{drink.name}}</h6>
           <small class="text-muted">Количество {{drink.count}}</small>
@@ -12,26 +12,51 @@
         <span class="text-muted">{{drink.count * drink.cost}}</span>
       </li>
       <li class="list-group-item d-flex justify-content-between">
-        <span>Суммарная стоимость (руб)</span>
-        <strong>{{basket.amount}}</strong>
+        <span>Общая стоимость (руб)</span>
+        <strong>{{order.amount}}</strong>
       </li>
       <li class="list-group-item d-flex justify-content-between">
         <span>Сдача (руб)</span>
-        <strong>{{basket.oddMoney}}</strong>
+        <strong>{{order.oddMoney}}</strong>
       </li>
     </ul>
     <div class="card p-2">
       <div class="input-group">
         <div class="input-group-append">
-          <button type="submit" class="btn btn-secondary">Оформить покупку</button>
+          <button type="submit" (click)="sell()" [disabled]="order.amount == 0 || order.amount > order.oddMoney"
+                  class="btn btn-secondary">Оформить покупку</button>
         </div>
       </div>
     </div>
     <hr>
-    <div *ngFor="let money of moneyEnableMoney" class="card p-2">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">Монетоприемник</span>
+    </h4>
+    <div *ngFor="let money of enableMoney" class="card p-2">
       <div class="input-group">
         <div class="input-group-append">
-          <button type="button" (click)="addMoneyToBasket(money)" class="btn btn-outline-secondary">Добавить {{money.cost}} (руб)</button>
+          <button type="button" (click)="addMoneyToBasket(money)" [disabled]="!money.enable" class="btn btn-outline-secondary">Добавить {{money.cost}} (руб)</button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div *ngIf="oddMoney.length > 0">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Сдача</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li *ngFor="let odd of oddMoney" class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{odd.cost}} {{odd.name}}</h6>
+            <small class="text-muted">Количество x{{odd.count}}</small>
+          </div>
+        </li>
+      </ul>
+      <div class="card p-2">
+        <div class="input-group">
+          <div class="input-group-append">
+            <button type="submit" (click)="takeOddMoney()" class="btn btn-secondary">Забрать сдачу</button>
+          </div>
         </div>
       </div>
     </div>
@@ -42,12 +67,15 @@
         <div class="card mb-4 shadow-sm">
           <img src="data:image/JPEG;base64,{{drink.image.normalImage}}">
           <div class="card-body">
-            <p class="card-text">{{drink.name}}</p>
+            <p class="card-text"><strong>{{drink.name}}</strong></p>
+            <p class="card-text">{{drink.cost}} (руб)</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" (click)="addDrinkToBasket(drink)" class="btn btn-sm btn-outline-secondary">Добавить</button>
+                <button type="button" (click)="addDrinkToBasket(drink)" [disabled]="drink.cost > order.oddMoney" class="btn btn-sm btn-outline-secondary">Добавить</button>
               </div>
-              <small class="text-muted">Стоимость {{drink.cost}} </small>
+              <div class="col">
+                <small class="text-muted">Остаток: {{drink.count}} </small>
+              </div>
             </div>
           </div>
         </div>

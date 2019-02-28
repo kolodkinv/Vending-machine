@@ -32,7 +32,5 @@ namespace Vending_Machine.Models.Products
         }   
         
         public Image Image { get; set; }
-        
-        public ICollection<ProductBasket> ProductBaskets { get; set; }
     }
 }

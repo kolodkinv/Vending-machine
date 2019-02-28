@@ -10,13 +10,11 @@ namespace Vending_Machine.Controllers
     [Route("api/[controller]")]
     public class DrinksController : Controller
     {
-        private readonly VendingMachine<Drink, Money> _machine;
-        private readonly IRepository<Image> _imageRepository;
+        private readonly VendingMachine<Drink, Money, Image> _machine;
 
-        public DrinksController(VendingMachine<Drink, Money> machine, IRepository<Image> imageRepository)
+        public DrinksController(VendingMachine<Drink, Money, Image> machine)
         {
             _machine = machine;
-            _imageRepository = imageRepository;
         }
 
         [HttpGet]
@@ -43,7 +41,7 @@ namespace Vending_Machine.Controllers
         {
             if(ModelState.IsValid)
             {
-                var image = _imageRepository.Get(drink.Image.Id);
+                var image = _machine.GetImage(drink.Image.Id);
                 drink.Image = image;
                 _machine.AddNewProductToStorage(drink);
                 return CreatedAtAction(nameof(Get), new { id = drink.Id }, drink);

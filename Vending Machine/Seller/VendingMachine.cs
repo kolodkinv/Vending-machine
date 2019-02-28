@@ -10,47 +10,29 @@ using Vending_Machine.Repositories.EF;
 
 namespace Vending_Machine.Seller
 {
-    public class VendingMachine<TProduct, TMoney> : IMultySeller
-        where TProduct : Product 
-        where TMoney : Money
+    /// <summary>
+    /// Торговый автомат
+    /// </summary>
+    /// <typeparam name="TProduct">Тип продуктов, которые продает автомат</typeparam>
+    /// <typeparam name="TMoney">Тип денег с которыми работает автомат</typeparam>
+    /// <typeparam name="TImage">Тип картинок-этикетов, которые показывает автомат на витрине</typeparam>
+    public abstract class VendingMachine<TProduct, TMoney, TImage>
+        where TProduct : Product    
+        where TMoney : Money       
+        where TImage : Image        
     {
-        private readonly IRepository<TProduct> _productStorage;
-        private readonly IRepository<TMoney> _moneyStorage;
-        private readonly IRepository<Basket> _basketStorage;
-        private readonly IRepository<MoneyBasket> _moneyBasketStorage;
-        private readonly IBasketHandler _basketHandler;
         private readonly UnitOfWorkEF _db;
         
-        public VendingMachine(
-            IRepository<TProduct> productStorage, 
-            IRepository<TMoney> moneyStorage, 
-            IRepository<Basket> basketStorage,
-            IRepository<MoneyBasket> moneyBasketStorage,
-            IBasketHandler basketHandler,
-            UnitOfWorkEF db)
+        public VendingMachine(UnitOfWorkEF db)
         {
-            _productStorage = productStorage;
-            _moneyStorage = moneyStorage;
-            _basketStorage = basketStorage;
-            _moneyBasketStorage = moneyBasketStorage;
-            _basketHandler = basketHandler;
             _db = db;
         }
 
-        public Basket CreateBasket()
+        public TImage GetImage(int id)
         {
-            var basket = new Basket();
-            _db.Baskets.Create(basket);
-            //_basketStorage.Create(basket);
-            return basket;
+            return (TImage) _db.Images.Get(id);
         }
-
-        public Basket GetBasket(int id)
-        {
-            return _db.Baskets.Get(id);
-            //return _basketStorage.Get(id);
-        }
-
+        
         public IEnumerable<Money> GetAllMoneis()
         {
             return _db.Money.GetAll();
@@ -62,14 +44,14 @@ namespace Vending_Machine.Seller
             return _db.Products.GetWithInclude(p => p.Image);
         }
 
-        public Money GetMoney(int id)
+        public TMoney GetMoney(int id)
         {
-            return _db.Money.Get(id);
+            return (TMoney) _db.Money.Get(id);
         }
 
-        public Product GetProduct(int id)
+        public TProduct GetProduct(int id)
         {
-            return _db.Products.Get(id);
+            return (TProduct) _db.Products.Get(id);
         }
 
         public void UpdateMoney(TMoney money)
@@ -82,98 +64,93 @@ namespace Vending_Machine.Seller
             _db.Products.Update(product);
         }
         
-        public void AddMoneyToBasket(int idBasket, int idMoney, int count = 1)
+        public List<TMoney> Sell(Order order)
         {
-            var money = _db.Money.Get(idMoney);
-            if (money != null)
-            {
-                if (money.Enable)
+            var oddMonies = new List<TMoney>();
+            
+            if (order.Products.Count > 0 && order.Money.Count > 0)
+            { 
+                var totalAmount = 0;
+                var oddMoney = 0;
+     
+                foreach (var moneyInOrder in order.Money)
                 {
-                    money.Count = count;
-                    var basket = _db.Baskets.GetWithInclude(p => p.Id == idBasket, b => b.MoneyBaskets).FirstOrDefault();         
-                    if (basket != null)
+                    var moneyInStore = _db.Money.Get(moneyInOrder.Id);
+                    
+                    if (moneyInStore != null && moneyInStore.Enable)
                     {
-                        _basketHandler.AddMoney(basket, money);
-                        //var moneyBasket = basket.MoneyBaskets;
-                        //_db.MoneyBaskets.Create(moneyBasket.FirstOrDefault());
-                        //_db.MoneyBaskets.Save();
-                        _db.Save();
+                        oddMoney += moneyInStore.Cost * moneyInOrder.Count;
+                        moneyInStore.Count += moneyInOrder.Count;
                     }
                     else
                     {
-                        throw new NotFoundException("Корзина не найдена");
+                        throw new NotFoundException("Купюра не найдена");
                     }
                 }
-                else
+                    
+                foreach (var productInOrder in order.Products)
                 {
-                    throw new BlockedMoneyException("Данный вид денег заблокирован");
+                    var productInStore = _db.Products.Get(productInOrder.Id);
+                    if (productInStore != null)
+                    {
+                        totalAmount += productInStore.Cost * productInOrder.Count;
+                        oddMoney -= productInStore.Cost * productInOrder.Count;
+                        productInStore.Count -= productInOrder.Count;
+                    }
+                    else
+                    {
+                        throw new NotFoundException("Товар не найден");
+                    }
+                }
+                _db.Save();
+
+                oddMonies = GetOddMoney(oddMoney);
+
+                foreach (var odd in oddMonies)
+                {
+                    var money = _db.Money.Get(odd.Id);
+                    money.Count -= odd.Count;
+                }
+                
+                _db.Save();
+            }
+
+            return oddMonies;
+        }
+
+        /// <summary>
+        /// Получение сдачи из цифрового номинала в монетный
+        /// </summary>
+        /// <param name="oddMoney"></param>
+        /// <returns></returns>
+        private List<TMoney> GetOddMoney(int oddMoney)
+        {
+            var oddMonies = new List<TMoney>();
+            if (oddMoney > 0)
+            {
+                var moneisInStore = _db.Money.GetAll()
+                    .Where(m => m.Count > 0)
+                    .OrderByDescending(m => m.Cost);
+                
+                foreach (var money in moneisInStore)
+                {
+                    var remainder = oddMoney % money.Cost;
+                    money.Count = oddMoney / money.Cost;
+                    
+                    if (money.Count > 0)
+                    {
+                        oddMonies.Add(money as TMoney);
+                        oddMoney -= money.Cost * money.Count;
+                    }
+                        
+                    if (remainder == 0)
+                    {
+                        return oddMonies;
+                    }
                 }
             }
-            else
-            {
-                throw new NotFoundException("Данный вид денег не найден");
-            }
-        }
 
-        public void AddProductToBasket(int idBasket, int idProduct, int count = 1)
-        {
-            var product = _productStorage.Get(idProduct);
-            if (product != null)
-            {
-                product.Count = count;
-//                var basket = _basketStorage.GetWithInclude(p => p.Id == idBasket, b => b.Products).FirstOrDefault();   
-//                if (basket != null)
-//                {
-//                    _basketHandler.AddProducts(basket, product); 
-//                    _basketStorage.Save();
-//                }
-//                else
-//                {
-//                    throw new NotFoundException("Корзина не найдена");
-//                } 
-            }
-            else
-            {
-                throw new NotFoundException("Добавляемый товар не найден");
-            }
-        }
-        
-        /// <summary>
-        /// Купить текущее содержимое корзины
-        /// </summary>
-        /// <returns></returns>
-        public double Sell(int id)
-        {
-            return 1.0;
-//            var basket = _basketStorage.GetWithInclude(p => p.Id == id, b => b.Money).FirstOrDefault();   
-//            var oddMoney = 0.0;
-//            if (basket != null && _basketHandler.IsCorrectPayment(basket))
-//            {
-//                foreach (var product in basket.Products)
-//                {
-//                    var productInStore = _productStorage.Get(product.Id);
-//                    if (productInStore != null)
-//                    {
-//                        productInStore.Count -= product.Count;
-//                        _productStorage.Update(productInStore);
-//                    }          
-//                }
-//
-//                foreach (var money in basket.Money)
-//                {
-//                    var moneyInStore = _moneyStorage.Get(money.Id);
-//                    if (moneyInStore != null)
-//                    {
-//                        moneyInStore.Count += moneyInStore.Count;
-//                        _moneyStorage.Update(moneyInStore);
-//                    }     
-//                }
-//
-//                oddMoney = basket.OddMoney;
-//                _basketStorage.Delete(basket.Id);
-//            }
-
-//            return oddMoney;
+            return oddMonies;
         }
 
         public void AddNewMoneyToStorage(TMoney money)

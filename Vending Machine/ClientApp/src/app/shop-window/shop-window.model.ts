@@ -22,16 +22,16 @@ export class ItemInBasket {
   idBasket:number;
 }
 
-export class Basket {
+export class Order {
   id: number;
-  drinks: Drink[];
+  products: Drink[];
   money: Money[];
   amount: number;
   oddMoney: number;
 
   constructor(){
     this.id = 0;
-    this.drinks = [];
+    this.products = [];
     this.money = [];
     this.amount = 0;
     this.oddMoney = 0;

@@ -11,9 +11,9 @@ namespace Vending_Machine.Controllers
     [Route("api/[controller]")]
     public class MoneyController : Controller
     {
-        private readonly VendingMachine<Drink, Money> _machine;
+        private readonly VendingMachine<Drink, Money, Image> _machine;
         
-        public MoneyController(VendingMachine<Drink, Money> machine)
+        public MoneyController(VendingMachine<Drink, Money, Image> machine)
         {
             _machine = machine;
         }

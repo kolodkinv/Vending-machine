@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Vending_Machine.Models
 {
-    public class Money
+    public class Money : ICloneable
     {
         private int _cost;
         private int _count;
@@ -49,7 +49,9 @@ namespace Vending_Machine.Models
             }
         }
         public bool Enable { get; set; }
-
-        public ICollection<MoneyBasket> MoneyBaskets { get; set; }
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

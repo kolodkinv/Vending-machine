@@ -1,14 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Vending_Machine.Dto
+namespace Vending_Machine.Models
 {
-    public class MoneyInBasket
+    public class MoneyInOrder
     {
         [Required]
         public int Id { get; set; }
         [Required]
         public int Count { get; set; }
-        [Required]
-        public int IdBasket { get; set; }
     }
 }

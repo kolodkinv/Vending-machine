@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Vending_Machine.Models;
 using Vending_Machine.Models.Products;
 using Vending_Machine.Repositories;
+using Vending_Machine.Repositories.EF;
 using Vending_Machine.Seller;
 
 namespace Vending_Machine.Controllers
@@ -11,24 +12,17 @@ namespace Vending_Machine.Controllers
     [Route("api/[controller]")]
     public class ImagesController : Controller
     {
-        private readonly IRepository<Image> _repository;
+        private readonly UnitOfWorkEF _db;
 
-        public ImagesController(IRepository<Image> repository)
+        public ImagesController(UnitOfWorkEF db)
         {
-            _repository = repository;
+            _db = db;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var images = _repository.GetAll();
-            return Ok(images);
-        }
-        
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var image = _repository.Get(id);
+            var image = _db.Images.Get(id);
             if (image == null)
             {
                 return NotFound();
@@ -43,18 +37,13 @@ namespace Vending_Machine.Controllers
             if (file != null)
             {
                 byte[] imageData;
-         
                 using (var binaryReader = new BinaryReader(file.OpenReadStream()))
                 {
                     imageData = binaryReader.ReadBytes((int)file.Length);
                 }
 
-                var image = new Image
-                {
-                    NormalImage = imageData
-                };
-                
-                _repository.Create(image);
+                var image = new Image { NormalImage = imageData };
+                _db.Images.Create(image);
                 return CreatedAtAction(nameof(Get), new { id = image.Id }, image);
             }
             

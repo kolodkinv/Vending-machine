@@ -1,28 +1,20 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ItemInBasket} from "./shop-window.model";
+import {Order} from "./shop-window.model";
 
 @Injectable()
-export class BasketService {
+export class ShopWindowService {
 
   urlDrinks: string = 'api/Drinks/';
-  urlBasket: string = 'api/Baskets/';
+  urlOrders: string = 'api/Orders/';
   urlMoney: string = 'api/Money';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public create(): Observable<any>{
-    return this.httpClient.post(this.urlBasket, null);
-  }
-
-  public addDrink(drink:ItemInBasket): Observable<any>{
-    return this.httpClient.put(this.urlBasket + 'AddProduct', drink);
-  }
-
-  public addMoney(drink:ItemInBasket): Observable<any>{
-    return this.httpClient.put(this.urlBasket + 'AddMoney', drink);
+  public sell(order: Order): Observable<any> {
+    return this.httpClient.post(this.urlOrders, order);
   }
 
   public getAllDrinks(): Observable<any> {

@@ -14,16 +14,18 @@ namespace Vending_Machine.Seller
         /// <param name="services"></param>
         /// <typeparam name="TProduct">Тип продукта, продаваемого автоматом</typeparam>
         /// <typeparam name="TMoney">Тип денег с которыми работает автомат</typeparam>
-        public static void AddVendingMachineEF<TProduct, TMoney>(this IServiceCollection services) 
+        /// <typeparam name="TImage">Тип картинок-этикетов, которые показывает автомат на витрине</typeparam>
+        /// <typeparam name="TMachine">Тип торгового автомата</typeparam>
+        public static void AddVendingMachineEF<TProduct, TMoney, TImage, TMachine>(this IServiceCollection services) 
             where TProduct : Product
             where TMoney: Money
+            where TImage: Image
+            where TMachine : VendingMachine<TProduct, TMoney, TImage>
         {
             services.AddScoped<IRepository<TProduct>, EFRepository<TProduct>>();
             services.AddScoped<IRepository<TMoney>, EFRepository<TMoney>>();
-            services.AddScoped<IRepository<Basket>, EFRepository<Basket>>();
-            services.AddScoped<IRepository<MoneyBasket>, EFRepository<MoneyBasket>>();
-            services.AddScoped<IBasketHandler, BasketHandler>();
-            services.AddScoped<VendingMachine<TProduct, TMoney>>();
+            services.AddScoped<IRepository<TImage>, EFRepository<TImage>>();
+            services.AddScoped<VendingMachine<TProduct, TMoney, TImage>, TMachine>();         
             services.AddScoped<UnitOfWorkEF>();
         }
         
