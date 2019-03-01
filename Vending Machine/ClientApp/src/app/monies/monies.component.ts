@@ -39,7 +39,7 @@ export class MoniesComponent implements OnInit{
         this.monies = data
       },
       error => {
-        // TODO Ошибка
+        console.error(error);
       })
   }
 
@@ -56,21 +56,10 @@ export class MoniesComponent implements OnInit{
       },
       error => {
         debugger;
-        // TODO Ошибка
+        console.error(error);
       }
     );
     this.newMoney = new Money();
-  }
-
-  updateMoney(){
-    this.moniesService.update(this.newMoney).subscribe(
-      () => {
-        this.loadMoneis();
-      },
-      error => {
-        // TODO Ошибка
-      }
-    )
   }
 
   cancelEdit(){
@@ -83,7 +72,7 @@ export class MoniesComponent implements OnInit{
         money.enable = !money.enable;
       },
       error => {
-        // TODO Ошибка
+        console.error(error);
       }
     )
   }
@@ -95,7 +84,7 @@ export class MoniesComponent implements OnInit{
         money.count += count;
       },
       error => {
-        // TODO Ошибка
+        console.error(error);
       }
     );
   }
@@ -107,7 +96,7 @@ export class MoniesComponent implements OnInit{
         money.count -= count;
       },
       error => {
-        // TODO Ошибка
+        console.error(error);
       }
     );
   }

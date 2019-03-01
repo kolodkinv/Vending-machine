@@ -16,15 +16,19 @@
         <strong>{{order.amount}}</strong>
       </li>
       <li class="list-group-item d-flex justify-content-between">
+        <span>Внесенная сумма (руб)</span>
+        <strong>{{amount}}</strong>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
         <span>Сдача (руб)</span>
         <strong>{{order.oddMoney}}</strong>
       </li>
     </ul>
     <div class="card p-2">
       <div class="input-group">
-        <div class="input-group-append">
-          <button type="submit" (click)="sell()" [disabled]="order.amount == 0 || order.amount > order.oddMoney"
-                  class="btn btn-secondary">Оформить покупку</button>
+        <div class="input-group-append money-enter">
+          <button type="submit" (click)="sell()" [disabled]="order.amount == 0 || order.amount > amount"
+                  class="btn btn-secondary money-enter">Оформить покупку</button>
         </div>
       </div>
     </div>
@@ -34,8 +38,8 @@
     </h4>
     <div *ngFor="let money of enableMoney" class="card p-2">
       <div class="input-group">
-        <div class="input-group-append">
-          <button type="button" (click)="addMoneyToBasket(money)" [disabled]="!money.enable" class="btn btn-outline-secondary">Добавить {{money.cost}} (руб)</button>
+        <div class="input-group-append money-enter">
+          <button type="button" (click)="addMoneyToBasket(money)" [disabled]="!money.enable" class="btn btn-outline-secondary money-enter">Добавить {{money.cost}} (руб)</button>
         </div>
       </div>
     </div>
@@ -65,7 +69,7 @@
     <div class="row">
       <div *ngFor="let drink of drinksInStore" class="col-md-4">
         <div class="card mb-4 shadow-sm">
-          <img src="data:image/JPEG;base64,{{drink.image.normalImage}}">
+          <img src="data:image/JPEG;base64,{{drink.image.normalImage}}" style="width: 100%;">
           <div class="card-body">
             <p class="card-text"><strong>{{drink.name}}</strong></p>
             <p class="card-text">{{drink.cost}} (руб)</p>

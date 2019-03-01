@@ -15,6 +15,7 @@ export class ShopWindowComponent implements OnInit {
   drinksInStore: Drink[];
   enableMoney: Money[];
   oddMoney: Money[];
+  amount: number;
 
   constructor(private shopWindowService: ShopWindowService) { }
 
@@ -23,6 +24,7 @@ export class ShopWindowComponent implements OnInit {
     this.loadMoneis();
     this.order = new Order();
     this.oddMoney = [];
+    this.amount = 0;
   }
 
   sell(){
@@ -67,6 +69,7 @@ export class ShopWindowComponent implements OnInit {
       this.order.money.push(currentMoney);
     }
     this.order.oddMoney += currentMoney.cost * currentMoney.count;
+    this.amount += currentMoney.cost * currentMoney.count;
   }
 
   loadDrinks(){

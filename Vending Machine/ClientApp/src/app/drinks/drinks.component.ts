@@ -66,7 +66,6 @@ export class DrinksComponent implements OnInit {
     this.drinksService.create(this.newDrink).subscribe(
 
       (data: Drink) => {
-        debugger;
         this.drinks.push(data);
       },
       error => {
@@ -93,25 +92,30 @@ export class DrinksComponent implements OnInit {
 
   increase(drink: Drink){
     let count = this.increaseForm.value['count'];
-    this.drinksService.increaseCount(drink, count).subscribe(
-      () => {
-        drink.count += count;
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    if (count > 0)
+    {
+      this.drinksService.increaseCount(drink, count).subscribe(
+        () => {
+          drink.count += count;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
 
   decrease(drink: Drink){
     let count = this.decreaseForm.value['count'];
-    this.drinksService.decreaseCount(drink, count).subscribe(
-      () => {
-        drink.count -= count;
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    if (count > 0) {
+      this.drinksService.decreaseCount(drink, count).subscribe(
+        () => {
+          drink.count -= count;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
 }

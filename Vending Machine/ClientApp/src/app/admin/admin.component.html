@@ -1,2 +1,7 @@
-<app-drinks></app-drinks>
-<app-monies></app-monies>
+<div *ngIf="password.length > 0">
+  <app-drinks></app-drinks>
+  <app-monies></app-monies>
+</div>
+<div *ngIf="password.length == 0">
+  <div class="alert-danger">Доступ к странице закрыт</div>
+</div>

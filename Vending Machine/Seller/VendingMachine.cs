@@ -11,7 +11,8 @@ using Vending_Machine.Repositories.EF;
 namespace Vending_Machine.Seller
 {
     /// <summary>
-    /// Торговый автомат
+    /// Абстрактный торговый автомат. Позволяет работать с разными типами товаров, денег,
+    /// а также этикеток товаров на витрине
     /// </summary>
     /// <typeparam name="TProduct">Тип продуктов, которые продает автомат</typeparam>
     /// <typeparam name="TMoney">Тип денег с которыми работает автомат</typeparam>
@@ -22,8 +23,8 @@ namespace Vending_Machine.Seller
         where TImage : Image        
     {
         private readonly UnitOfWorkEF _db;
-        
-        public VendingMachine(UnitOfWorkEF db)
+
+        protected VendingMachine(UnitOfWorkEF db)
         {
             _db = db;
         }
@@ -36,7 +37,6 @@ namespace Vending_Machine.Seller
         public IEnumerable<Money> GetAllMoneis()
         {
             return _db.Money.GetAll();
-            //return _moneyStorage.GetAll();
         }
 
         public IEnumerable<Product> GetAllProducts()
@@ -64,19 +64,33 @@ namespace Vending_Machine.Seller
             _db.Products.Update(product);
         }
         
+        public void AddNewMoneyToStorage(TMoney money)
+        {
+            _db.Money.Create(money);   
+        }
+
+        public void AddNewProductToStorage(TProduct product)
+        {
+            _db.Products.Create(product);
+        }
+        
+        /// <summary>
+        /// Покупка выбранный товаров за внесенные деньги и получение сдачи
+        /// </summary>
+        /// <param name="order">Заказ</param>
+        /// <returns>Список монет и их количество возвращаемое в качестве сдачи</returns>
+        /// <exception cref="NotFoundException">Монета или продукт не найден</exception>
+        /// <exception cref="OrderCostException">Сумма заказа превышает сумму монет</exception>
         public List<TMoney> Sell(Order order)
         {
             var oddMonies = new List<TMoney>();
+            var oddMoney = 0;
             
             if (order.Products.Count > 0 && order.Money.Count > 0)
-            { 
-                var totalAmount = 0;
-                var oddMoney = 0;
-     
+            {      
                 foreach (var moneyInOrder in order.Money)
                 {
-                    var moneyInStore = _db.Money.Get(moneyInOrder.Id);
-                    
+                    var moneyInStore = _db.Money.Get(moneyInOrder.Id);          
                     if (moneyInStore != null && moneyInStore.Enable)
                     {
                         oddMoney += moneyInStore.Cost * moneyInOrder.Count;
@@ -93,8 +107,11 @@ namespace Vending_Machine.Seller
                     var productInStore = _db.Products.Get(productInOrder.Id);
                     if (productInStore != null)
                     {
-                        totalAmount += productInStore.Cost * productInOrder.Count;
                         oddMoney -= productInStore.Cost * productInOrder.Count;
+                        if (oddMoney < 0)
+                        {
+                            throw new OrderCostException("Стоимость товаров превышает внесенную сумму");
+                        }
                         productInStore.Count -= productInOrder.Count;
                     }
                     else
@@ -105,7 +122,6 @@ namespace Vending_Machine.Seller
                 _db.Save();
 
                 oddMonies = GetOddMoney(oddMoney);
-
                 foreach (var odd in oddMonies)
                 {
                     var money = _db.Money.Get(odd.Id);
@@ -151,16 +167,6 @@ namespace Vending_Machine.Seller
             }
 
             return oddMonies;
-        }
-
-        public void AddNewMoneyToStorage(TMoney money)
-        {
-            _db.Money.Create(money);   
-        }
-
-        public void AddNewProductToStorage(TProduct product)
-        {
-            _db.Products.Create(product);
         }
     }
 }

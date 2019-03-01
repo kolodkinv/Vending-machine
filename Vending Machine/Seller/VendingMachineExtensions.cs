@@ -28,6 +28,5 @@ namespace Vending_Machine.Seller
             services.AddScoped<VendingMachine<TProduct, TMoney, TImage>, TMachine>();         
             services.AddScoped<UnitOfWorkEF>();
         }
-        
     }
 }
