@@ -36,16 +36,16 @@ namespace Vending_Machine
             
             services.AddVendingMachineEF<Drink, Money, Image, DrinksMachine>();
 
-//            string connection =
-//                "Server=localhost,1433;AttachDBFilename=%CONTENTROOTPATH%/App_Data/Machine4.mdf;User Id=SA;Password=ZxcVda!@#123";
-//            if(connection.Contains("%CONTENTROOTPATH%"))
-//            {
-//                connection = connection.Replace("%CONTENTROOTPATH%", _contentRootPath);
-//            }   
-            //services.AddDbContext<MachineContext>(opt => opt.UseSqlServer(connection));
+            var connection = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=%CONTENTROOTPATH%\\App_Data\\DrinkMachine.mdf;Integrated Security=True;Connect Timeout=30";
+            if(connection.Contains("%CONTENTROOTPATH%"))
+            {
+                connection = connection.Replace("%CONTENTROOTPATH%", _contentRootPath);
+            }   
+            services.AddDbContext<MachineContext>(opt => opt.UseSqlServer(connection));
             
-            services.AddDbContext<MachineContext>(
-                opt => opt.UseSqlServer("Server=localhost,1433;Database=Machine4;User Id=SA;Password=ZxcVda!@#123"));
+            
+            //services.AddDbContext<MachineContext>(
+            //    opt => opt.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
