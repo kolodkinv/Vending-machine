@@ -29,51 +29,6 @@ namespace Vending_Machine.Seller
             _db = db;
         }
 
-        public TImage GetImage(int id)
-        {
-            return (TImage) _db.Images.Get(id);
-        }
-        
-        public IEnumerable<Money> GetAllMoneis()
-        {
-            return _db.Money.GetAll();
-        }
-
-        public IEnumerable<Product> GetAllProducts()
-        {
-            return _db.Products.GetWithInclude(p => p.Image);
-        }
-
-        public TMoney GetMoney(int id)
-        {
-            return (TMoney) _db.Money.Get(id);
-        }
-
-        public TProduct GetProduct(int id)
-        {
-            return (TProduct) _db.Products.Get(id);
-        }
-
-        public void UpdateMoney(TMoney money)
-        {
-            _db.Money.Update(money);
-        }
-
-        public void UpdateProduct(TProduct product)
-        {
-            _db.Products.Update(product);
-        }
-        
-        public void AddNewMoneyToStorage(TMoney money)
-        {
-            _db.Money.Create(money);   
-        }
-
-        public void AddNewProductToStorage(TProduct product)
-        {
-            _db.Products.Create(product);
-        }
-        
         /// <summary>
         /// Покупка выбранный товаров за внесенные деньги и получение сдачи
         /// </summary>
@@ -87,7 +42,8 @@ namespace Vending_Machine.Seller
             var oddMoney = 0;
             
             if (order.Products.Count > 0 && order.Money.Count > 0)
-            {      
+            {
+                // Обрабатываем купюры в заказе и считаем общую сумму и сдачу
                 foreach (var moneyInOrder in order.Money)
                 {
                     var moneyInStore = _db.Money.Get(moneyInOrder.Id);          
@@ -102,6 +58,7 @@ namespace Vending_Machine.Seller
                     }
                 }
                     
+                // Обрабатываем продукты в заказе и считаем размер сдачи
                 foreach (var productInOrder in order.Products)
                 {
                     var productInStore = _db.Products.Get(productInOrder.Id);
@@ -121,6 +78,7 @@ namespace Vending_Machine.Seller
                 }
                 _db.Save();
 
+                // Получаем монеты для сдачи и забираем их из денежного хранилища
                 oddMonies = GetOddMoney(oddMoney);
                 foreach (var odd in oddMonies)
                 {
@@ -142,6 +100,7 @@ namespace Vending_Machine.Seller
         private List<TMoney> GetOddMoney(int oddMoney)
         {
             var oddMonies = new List<TMoney>();
+            
             if (oddMoney > 0)
             {
                 var moneisInStore = _db.Money.GetAll()
@@ -167,6 +126,62 @@ namespace Vending_Machine.Seller
             }
 
             return oddMonies;
+        }
+        
+        public TImage GetImage(int id)
+        {
+            return (TImage) _db.Images.Get(id);
+        }
+
+        public void AddMoney(TMoney money)
+        {
+            _db.Money.Create(money);   
+        }
+        
+        public void UpdateImage(TImage image)
+        {
+            _db.Images.Update(image);
+        }
+        
+        public void RemoveImage(int id)
+        {
+            _db.Images.Delete(id);
+        }
+        
+        public IEnumerable<Money> GetAllMoneis()
+        {
+            return _db.Money.GetAll();
+        }
+        
+        public TMoney GetMoney(int id)
+        {
+            return (TMoney) _db.Money.Get(id);
+        }
+
+        public void UpdateMoney(TMoney money)
+        {
+            _db.Money.Update(money);
+        }
+        
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return _db.Products.GetWithInclude(p => p.Image);
+        }
+
+        public TProduct GetProduct(int id)
+        {
+            return (TProduct) _db.Products.GetWithInclude(p => p.Id == id, m => m.Image).FirstOrDefault();
+        }
+
+        public void UpdateProduct(TProduct product)
+        {
+            _db.Products.Update(product);
+            _db.Save();
+        }
+
+        public void AddProduct(TProduct product)
+        {
+            _db.Products.Create(product);
         }
     }
 }

@@ -6,6 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Vending_Machine.Repositories.EF
 {
+    /// <summary>
+    /// Обобщенный репозиторий работающий с EntityFramework
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         MachineContext _context;

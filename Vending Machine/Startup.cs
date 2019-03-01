@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Vending_Machine.Middlewares;
 using Vending_Machine.Models;
 using Vending_Machine.Models.Products;
-using Vending_Machine.Repositories;
 using Vending_Machine.Repositories.EF;
 using Vending_Machine.Seller;
 
@@ -17,9 +16,12 @@ namespace Vending_Machine
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private string _contentRootPath;
+        
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            _contentRootPath = env.ContentRootPath;
         }
 
         public IConfiguration Configuration { get; }
@@ -34,13 +36,16 @@ namespace Vending_Machine
             
             services.AddVendingMachineEF<Drink, Money, Image, DrinksMachine>();
 
+//            string connection =
+//                "Server=localhost,1433;AttachDBFilename=%CONTENTROOTPATH%/App_Data/Machine4.mdf;User Id=SA;Password=ZxcVda!@#123";
+//            if(connection.Contains("%CONTENTROOTPATH%"))
+//            {
+//                connection = connection.Replace("%CONTENTROOTPATH%", _contentRootPath);
+//            }   
+            //services.AddDbContext<MachineContext>(opt => opt.UseSqlServer(connection));
+            
             services.AddDbContext<MachineContext>(
-                opt => opt.UseSqlServer("Server=172.17.0.3,1433;Database=Machine4;User Id=SA;Password=ZxcVda!@#123"));
-//            services.AddDbContext<MachineContext>(options =>
-//                options.UseMySql(
-//                    "server=172.17.0.2;database=crypto;user=crypto;password=test;Charset=utf8;"
-//                )
-//            );
+                opt => opt.UseSqlServer("Server=localhost,1433;Database=Machine4;User Id=SA;Password=ZxcVda!@#123"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

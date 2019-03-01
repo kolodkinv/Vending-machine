@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Vending_Machine.Models;
 using Vending_Machine.Models.Products;
 using Vending_Machine.Repositories;
@@ -43,7 +44,7 @@ namespace Vending_Machine.Controllers
             {
                 var image = _machine.GetImage(drink.Image.Id);
                 drink.Image = image;
-                _machine.AddNewProductToStorage(drink);
+                _machine.AddProduct(drink);
                 return CreatedAtAction(nameof(Get), new { id = drink.Id }, drink);
             }
             return BadRequest(ModelState);
@@ -54,7 +55,19 @@ namespace Vending_Machine.Controllers
         {
             if(ModelState.IsValid)
             {
-                _machine.UpdateProduct(drink);                
+                if (drink.Image != null && drink.Image.ProductId == null)
+                {
+                    var drinkInStore = _machine.GetProduct(drink.Id);
+                    var image = _machine.GetImage(drinkInStore.Image.Id);
+                    image.NormalImage = drink.Image.NormalImage;
+                    _machine.UpdateImage(image);
+                    _machine.RemoveImage(drink.Image.Id);
+                }
+                else
+                {
+                    _machine.UpdateProduct(drink);     
+                }
+          
                 return Ok();
             }
             return BadRequest(ModelState);

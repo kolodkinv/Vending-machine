@@ -5,6 +5,9 @@ using Vending_Machine.Models.Products;
 
 namespace Vending_Machine.Repositories.EF
 {
+    /// <summary>
+    /// Реализация патерна единицы работы для синхронизации контекстов бд в репозиториях
+    /// </summary>
     public class UnitOfWorkEF 
     {
         private MachineContext _context;
@@ -47,13 +50,13 @@ namespace Vending_Machine.Repositories.EF
  
         public virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
                     _context.Dispose();
                 }
-                this.disposed = true;
+                disposed = true;
             }
         }
  

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vending_Machine.Repositories
 {
+    
     public interface IRepository<T> : IDisposable 
         where T : class
     {

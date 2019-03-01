@@ -42,7 +42,7 @@ namespace Vending_Machine.Controllers
         {
             if(ModelState.IsValid)
             {
-                _machine.AddNewMoneyToStorage(money);
+                _machine.AddMoney(money);
                 return CreatedAtAction(nameof(Get), new { id = money.Id }, money);
             }
             return BadRequest(ModelState);

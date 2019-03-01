@@ -19,6 +19,8 @@ export class DrinksComponent implements OnInit {
 
   increaseForm : FormGroup;
   decreaseForm : FormGroup;
+  costForm: FormGroup;
+  imageForm: FormGroup;
 
   constructor(private drinksService: DrinksService){
     this.increaseForm = new FormGroup({
@@ -27,6 +29,12 @@ export class DrinksComponent implements OnInit {
     this.decreaseForm = new FormGroup({
       count: new FormControl(''),
     });
+    this.costForm = new FormGroup({
+      cost: new FormControl(''),
+    });
+    this.imageForm = new FormGroup({
+      image: new FormControl(''),
+    })
   }
 
   ngOnInit() {
@@ -47,13 +55,34 @@ export class DrinksComponent implements OnInit {
   editDrink(drink: Drink){
     this.increaseForm.setValue({count: 0});
     this.decreaseForm.setValue({count: 0});
+    this.costForm.setValue({cost: drink.cost});
     this.editableDrink = drink;
   }
 
-  onFileChanged(event) {
+  onFileChanged(event){
     this.drinksService.uploadFile(event.target.files[0]).subscribe(
       (data: Image) => {
         this.newPictute = data;
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+
+  saveEditImage(drink:Drink){
+    this.drinksService.update(drink).subscribe(
+      () => {},
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+  onEditImage(event, drink:Drink){
+    this.drinksService.uploadFile(event.target.files[0]).subscribe(
+      (data: Image) => {
+        drink.image = data;
       },
       error => {
         console.error(error);
@@ -75,15 +104,17 @@ export class DrinksComponent implements OnInit {
     this.newDrink = new Drink();
   }
 
-  updateDrink(){
-    this.drinksService.update(this.newDrink).subscribe(
-      () => {
-        this.loadDrinks();
-      },
+  updateDrink(drink:Drink){
+
+    let cost = this.costForm.value['cost'];
+    drink.cost = cost;
+
+    this.drinksService.update(drink).subscribe(
+      () => {},
       error => {
         console.error(error);
       }
-    )
+    );
   }
 
   cancelEdit(){

@@ -89,6 +89,36 @@
     </form>
   </div>
   <div class="operation">
+    <form [formGroup]="costForm" (ngSubmit)="updateDrink(editableDrink)">
+      <div class="form-row">
+        <div class="col">
+          <label for="cost">Стоимость, руб</label>
+        </div>
+        <div class="col">
+          <input type="number" id="cost" class="form-control" formControlName="cost">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary operation">Изменить</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="operation">
+    <form [formGroup]="imageForm" (ngSubmit)="saveEditImage(editableDrink)">
+      <div class="form-row">
+        <div class="col">
+          <label for="image">Новое изображение</label>
+        </div>
+        <div class="col">
+          <input type="file" accept="image/*" id="image" class="form-control" (change)="onEditImage($event, editableDrink)" formControlName="image" />
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary operation">Сохранить</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="operation">
     <button type="button" (click)="cancelEdit()" class="btn btn-primary operation">Выйти</button>
   </div>
 </ng-template>
