@@ -231,5 +231,3 @@ _Pvt_Extensions
 .fake/
 
 .idea/
-*.sln
-*.sln.DotSettings.user
