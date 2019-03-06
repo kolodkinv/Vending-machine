@@ -32,6 +32,7 @@ export class ShopWindowComponent implements OnInit {
       (data:Money[]) => {
         this.order = new Order();
         this.oddMoney = data;
+        this.amount = 0;
       },
       error => {
         console.error(error);
